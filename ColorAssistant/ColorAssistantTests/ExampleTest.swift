@@ -9,9 +9,10 @@
 import XCTest
 
 class ExampleTest: XCTestCase {
-	let ex = Example()
+	private var ex : Example!
    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+	// Put setup code here. This method is called before the invocation of each test method in the class.
+	self.ex = Example()
     }
 
     override func tearDown() {

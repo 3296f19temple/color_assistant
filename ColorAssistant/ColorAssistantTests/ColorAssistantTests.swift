@@ -22,20 +22,26 @@ class ColorAssistantTests: XCTestCase {
     func testCenterColor() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-		let image = #imageLiteral(resourceName: "stacked")
+		let image = #imageLiteral(resourceName: "centerPixelGreen")
 		let detectedColor = image.getCenterColor().cgColor//.components
-		let dRed = detectedColor.components![0].rounded()
-		let dGreen = detectedColor.components![1].rounded()
-		let dBlue = detectedColor.components![2].rounded()
+		let dRed = detectedColor.components![0]
+		let dGreen = detectedColor.components![1]
+		let dBlue = detectedColor.components![2]
 	
 		let actual = #colorLiteral(red: 0, green: 0.9568627451, blue: 0.1568627451, alpha: 1).cgColor//.components
-		let aRed = actual.components![0].rounded()
-		let aGreen = actual.components![1].rounded()
-		let aBlue = actual.components![2].rounded()
+		let aRed = actual.components![0]
+		let aGreen = actual.components![1]
+		let aBlue = actual.components![2]
 		
-		XCTAssert(dRed == aRed, "not same red value")
-		XCTAssert(dGreen == aGreen, "not same green value")
-		XCTAssert(dBlue == aBlue, "not same blue value")
+		let sig = NumberFormatter()
+		sig.numberStyle = .decimal
+		sig.maximumFractionDigits = 2
+		
+		XCTAssert(sig.string(for: String(describing: dRed))  == sig.string(for: String(describing: aRed)), "not same red value. Detected red:\(String(describing: sig.string(for: String(describing: dRed)))) Actual: \(String(describing: sig.string(for: String(describing: aRed))))")
+		
+		XCTAssert(sig.string(for: String(describing: dGreen))  == sig.string(for: String(describing: aGreen)), "not same green value. Detected green: \(String(describing: sig.string(for: String(describing: dGreen)))) Actual: \(String(describing: sig.string(for: String(describing: aGreen))))")
+		
+		XCTAssert(sig.string(for: String(describing: dBlue))  == sig.string(for: String(describing: aBlue)), "not same blue value. Detected blue: \(String(describing: sig.string(for: String(describing: dBlue)))) Actual: \(String(describing: sig.string(for: String(describing: aBlue))))")
 		
     }
 

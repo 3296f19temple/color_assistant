@@ -2,7 +2,7 @@
 //  ColorAssistantUITests.swift
 //  ColorAssistantUITests
 //
-//  Created by Likhon Gomes on 11/11/19.
+//  Created by Ian Applebaum on 11/15/19.
 //  Copyright © 2019 Likhon Gomes. All rights reserved.
 //
 

@@ -48,15 +48,15 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			print("No image found")
 			return
 		}
-		var x = image.size.height
+		let x = image.size.height
 		print(x)
-		var y = image.size.width
+		let y = image.size.width
 		print(y)
-		var centX = x/2
-		var cy = y/2
+		let centX = x/2
+		let cy = y/2
 			DispatchQueue.main.async {
 				self.view.backgroundColor = image.getPixelColor(pos: CGPoint(x: centX, y: cy))
-				
+				self.label.text = image.getPixelColor(pos: CGPoint(x: centX, y: cy)).description
 			}
 		// print out the image size as a test
 		print(image.size)
@@ -82,18 +82,16 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 	
 }
 extension UIImage {
-      func getPixelColor(pos: CGPoint) -> UIColor {
-
-	                    let pixelData = self.cgImage!.dataProvider!.data
-          let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-
-          let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
-
-          let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-          let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
-          let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-          let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-
-          return UIColor(red: r, green: g, blue: b, alpha: a)
-      }
-  }
+	func getPixelColor(pos: CGPoint) -> UIColor {
+		let pixelData = self.cgImage!.dataProvider!.data
+		let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+		let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+		let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+		let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
+		let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+		let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+		
+		return UIColor(red: r, green: g, blue: b, alpha: a)
+		
+	}
+}

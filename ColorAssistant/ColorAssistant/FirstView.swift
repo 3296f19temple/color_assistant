@@ -41,14 +41,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         //label.textColor = .red
         
     }
-	fileprivate func getCenterColor(_ image: UIImage) -> UIColor {
-		let height = image.size.height
-		let width = image.size.width
-		let centerY = height/2
-		let centerX = width/2
-		let center: CGPoint = CGPoint(x: centerX, y: centerY)
-		return image.getPixelColor(pos: center)
-	}
+	
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		picker.dismiss(animated: true)
@@ -58,7 +51,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			return
 		}
 		
-		let centerColor = getCenterColor(image)
+		let centerColor = image.getCenterColor()
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
 				self.label.text = centerColor.description
@@ -98,5 +91,13 @@ extension UIImage {
 		
 		return UIColor(red: r, green: g, blue: b, alpha: a)
 		
+	}
+	 func getCenterColor() -> UIColor {
+		let height = self.size.height
+		let width = self.size.width
+		let centerY = height/2
+		let centerX = width/2
+		let center: CGPoint = CGPoint(x: centerX, y: centerY)
+		return self.getPixelColor(pos: center)
 	}
 }

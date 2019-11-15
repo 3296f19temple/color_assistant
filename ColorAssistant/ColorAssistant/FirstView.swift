@@ -41,6 +41,15 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         //label.textColor = .red
         
     }
+	fileprivate func getCenterColor(_ image: UIImage) -> UIColor {
+		let height = image.size.height
+		let width = image.size.width
+		let centerY = height/2
+		let centerX = width/2
+		let center: CGPoint = CGPoint(x: centerX, y: centerY)
+		return image.getPixelColor(pos: center)
+	}
+	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		picker.dismiss(animated: true)
 
@@ -48,15 +57,11 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			print("No image found")
 			return
 		}
-		let x = image.size.height
-		print(x)
-		let y = image.size.width
-		print(y)
-		let centX = x/2
-		let cy = y/2
-			DispatchQueue.main.async {
-				self.view.backgroundColor = image.getPixelColor(pos: CGPoint(x: centX, y: cy))
-				self.label.text = image.getPixelColor(pos: CGPoint(x: centX, y: cy)).description
+		
+		let centerColor = getCenterColor(image)
+		DispatchQueue.main.async {
+				self.view.backgroundColor = centerColor
+				self.label.text = centerColor.description
 			}
 		// print out the image size as a test
 		print(image.size)

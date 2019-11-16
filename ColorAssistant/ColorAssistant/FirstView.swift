@@ -10,7 +10,7 @@ import UIKit
 
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let label = UILabel()
+    let label = UITextView()
     let openCamera = UIButton()
 	var img = #imageLiteral(resourceName: "stacked")
     override func viewDidLoad() {
@@ -34,10 +34,17 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        
         //label.heightAnchor.constraint(equalToConstant: 40).isActive = true
         //label.widthAnchor.constraint(equalToConstant: 200).isActive = true
         label.text = "Color Assistant"
         label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        
         //label.textColor = .red
         
     }
@@ -55,6 +62,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
 				self.label.text = centerColor.description
+                self.label.font = UIFont.systemFont(ofSize: 12)
 			}
 		// print out the image size as a test
 		print(image.size)

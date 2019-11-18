@@ -33,7 +33,7 @@ Color identification will allow a user to identify what color an object is.
 The color assistant application will do so by taking the average RGB values of the object providing a close approximation of what the color is.
 ## Feature Wardrobe Assistant
 Using Color detection, Wardrobe assistant will allow the user to pair articles of clothing that go together.
-##Trello Board
+## Trello Board
 https://trello.com/b/ol7xoT56/final-project-color-assistant
 
 

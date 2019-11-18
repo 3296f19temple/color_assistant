@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let label = UITextView()
     let openCamera = UIButton()
 	var img = #imageLiteral(resourceName: "stacked")
+    
+    var session: AVCaptureSession?
+    var stillImageOutput: AVCaptureStillImageOutput?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		//camera()

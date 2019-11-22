@@ -17,7 +17,6 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         super.viewDidLoad()
 		//camera()
 		var image = img
-	
 		view.backgroundColor = .white
         setuplabel()
 		openCameraSetup()
@@ -50,11 +49,13 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			print("No image found")
 			return
 		}
-		
-		let centerColor = image.getCenterColor()
+        let centX = Int(image.size.width / 2) - 15
+        let centY = Int(img.size.height / 2) - 15
+        
+        let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
-				self.label.text = centerColor.description
+                self.label.text = centerColor?.description
 			}
 		// print out the image size as a test
 		print(image.size)
@@ -80,24 +81,17 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 	
 }
 extension UIImage {
-	func getPixelColor(pos: CGPoint) -> UIColor {
-		let pixelData = self.cgImage!.dataProvider!.data
-		let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-		let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
-		let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-		let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
-		let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-		let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-		
-		return UIColor(red: r, green: g, blue: b, alpha: a)
-		
-	}
-	 func getCenterColor() -> UIColor {
-		let height = self.size.height
-		let width = self.size.width
-		let centerY = height/2
-		let centerX = width/2
-		let center: CGPoint = CGPoint(x: centerX, y: centerY)
-		return self.getPixelColor(pos: center)
-	}
+    func averageColor(xCoord: Int, yCoord : Int) -> UIColor?{
+        guard let inputImage = CIImage(image: self) else { return nil }
+        let extentVector = CIVector(x: CGFloat(xCoord), y: CGFloat(yCoord), z: 30, w: 30)
+
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+    }
 }

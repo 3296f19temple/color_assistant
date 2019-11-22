@@ -145,7 +145,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
-				self.label.text = centerColor.description
+				self.label.text = centerColor!.description
                 self.label.font = UIFont.systemFont(ofSize: 12)
 
 			}

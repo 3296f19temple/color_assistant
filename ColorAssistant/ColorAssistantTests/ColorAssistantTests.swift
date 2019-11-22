@@ -19,11 +19,11 @@ class ColorAssistantTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
- /*   func testCenterColor() {
+	func testCenterColor() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 		let image = #imageLiteral(resourceName: "centerPixelGreen")
-        let detectedColor = image.averageColor(xCoord: (image.size.width/2)-5), yCoord: <#T##Int#>)//.components
+        let detectedColor = image.getCenterColor().cgColor
 		let dRed = detectedColor.components![0]
 		let dGreen = detectedColor.components![1]
 		let dBlue = detectedColor.components![2]
@@ -44,7 +44,7 @@ class ColorAssistantTests: XCTestCase {
 		XCTAssert(sig.string(for: String(describing: dBlue))  == sig.string(for: String(describing: aBlue)), "not same blue value. Detected blue: \(String(describing: sig.string(for: String(describing: dBlue)))) Actual: \(String(describing: sig.string(for: String(describing: aBlue))))")
 		
     }
-*/
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         measure {

@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 			if let windowScene = scene as? UIWindowScene {
 				let window = UIWindow(windowScene: windowScene)
 				
-				window.rootViewController = FirstView()//UIHostingController(rootView: contentView)
+				window.rootViewController = CameraVC()//UIHostingController(rootView: contentView)
 				self.window = window
 				window.makeKeyAndVisible()
 			}

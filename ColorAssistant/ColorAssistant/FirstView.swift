@@ -7,8 +7,21 @@
 //
 
 import UIKit
+import AVFoundation
 import WebKit
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    let captureImageView = UIImageView()
+    var outputImage = UIImage()
+    let cardView = UIView()
+    let dismissButton = UIButton()
+    
+    
+    
+    
+
+
+
 
 	  let wheel = WKWebView()
 
@@ -176,16 +189,87 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 	let label = UILabel()
     let openCamera = UIButton()
 	var img = #imageLiteral(resourceName: "stacked")
+    
+    var session: AVCaptureSession?
+    var stillImageOutput: AVCaptureStillImageOutput?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		//camera()
 		var image = img
-		view.backgroundColor = .white
-        setuplabel()
-		openCameraSetup()
 
+        
+        
+        cardViewSetup()
+        dismissButtonSetup()
+        
 
     }
+    
+    
+    
+    
+    
+    
+    
+    func captureImageViewSetup() {
+        view.addSubview(captureImageView)
+        captureImageView.translatesAutoresizingMaskIntoConstraints = false
+        captureImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        captureImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        captureImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        captureImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        captureImageView.image = outputImage
+    }
+    
+    func cardViewSetup() {
+        view.addSubview(cardView)
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        cardView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        cardView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        cardView.backgroundColor = .white
+        cardView.layer.cornerRadius = 10
+    }
+    
+    func dismissButtonSetup() {
+        view.addSubview(dismissButton)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        dismissButton.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        dismissButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        dismissButton.bottomAnchor.constraint(equalTo: cardView.topAnchor).isActive = true
+        dismissButton.addTarget(self, action: #selector(dismissButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func dismissButtonClicked() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	func camera()  {
 		let vc = UIImagePickerController()
 		vc.sourceType = .camera
@@ -193,15 +277,23 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 		vc.delegate = self
 		present(vc, animated: true)
 	}
+    
     func setuplabel() {
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        
         //label.heightAnchor.constraint(equalToConstant: 40).isActive = true
         //label.widthAnchor.constraint(equalToConstant: 200).isActive = true
         label.text = "Color Assistant"
         label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        
         //label.textColor = .red
 
     }

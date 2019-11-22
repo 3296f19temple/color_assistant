@@ -7,44 +7,22 @@
 //
 
 import UIKit
+
 import AVFoundation
 
-class CustomCamera: UIViewController {
+class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     let captureSession = AVCaptureSession()
-    //let rearCamera = AVCaptureDevice?
-    
-    var session: AVCaptureSession?
-    var stillImageOutput: AVCaptureStillImageOutput?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    let previewLayer = CALayer()
+    var captureDevice:AVCaptureDevice!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        
-      
-        // Do any additional setup after loading the view.
     }
     
-    func setupCaptureSession() {
-        captureSession.sessionPreset = AVCaptureSession.Preset.photo
-    }
+
     
-    func setupDevice() {
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInTripleCamera], mediaType: .video, position: AVCaptureDevice.Position.unspecified)
-        let devices = deviceDiscoverySession.devices
-    }
-    
-    func setupInputOutput() {
-        
-    }
-    
-    func setupPreviewLayer() {
-        
-    }
-    
-    func startRunningCapture() {
-         
-    }
+
 }

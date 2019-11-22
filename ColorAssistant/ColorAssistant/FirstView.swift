@@ -19,7 +19,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     
     
-    let label = UITextView()
+
 
 
 

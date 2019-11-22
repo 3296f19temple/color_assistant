@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Files
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let label = UILabel()
@@ -41,7 +41,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
     }
 	
-	
+	let bundle = try! Folder(path: Bundle.main.bundlePath)
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		picker.dismiss(animated: true)
 
@@ -49,6 +49,10 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			print("No image found")
 			return
 		}
+		
+		
+		image.save(UUID().uuidString)
+//		bundle.createFile(named: "image_\(image.description)")
         let centX = Int(image.size.width / 2) - 15
         let centY = Int(img.size.height / 2) - 15
         
@@ -114,4 +118,13 @@ extension UIImage {
 		let center: CGPoint = CGPoint(x: centerX, y: centerY)
 		return self.getPixelColor(pos: center)
 	}
+		/// Save PNG in the Documents directory
+		func save(_ name: String) {
+			let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+			let url = URL(fileURLWithPath: path).appendingPathComponent(name)
+			try! self.pngData()?.write(to: url)
+			print("saved image at \(url)")
+		}
+	
+
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */; };
 		67589BDB237EAA9F0087318A /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
 		678AE1C1237E08B100F9151C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678AE1C0237E08B100F9151C /* Example.swift */; };
+		67EE8AF92387A3D3007E1556 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 67EE8AF82387A3D3007E1556 /* Files */; };
+		67EE8AFC2387A84E007E1556 /* GenerateNonRecurringRandomNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = 67EE8AFB2387A84E007E1556 /* GenerateNonRecurringRandomNumbers */; };
 		6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */; };
 		6ED015DF2379FAB2004B9DD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED015DE2379FAB2004B9DD7 /* SceneDelegate.swift */; };
 		6ED015E32379FAB4004B9DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED015E22379FAB4004B9DD7 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EE8AF92387A3D3007E1556 /* Files in Frameworks */,
+				67EE8AFC2387A84E007E1556 /* GenerateNonRecurringRandomNumbers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +196,10 @@
 			dependencies = (
 			);
 			name = ColorAssistant;
+			packageProductDependencies = (
+				67EE8AF82387A3D3007E1556 /* Files */,
+				67EE8AFB2387A84E007E1556 /* GenerateNonRecurringRandomNumbers */,
+			);
 			productName = ColorAssistant;
 			productReference = 6ED015D92379FAB2004B9DD7 /* ColorAssistant.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +236,10 @@
 				Base,
 			);
 			mainGroup = 6ED015D02379FAB2004B9DD7;
+			packageReferences = (
+				67EE8AF72387A3D3007E1556 /* XCRemoteSwiftPackageReference "Files" */,
+				67EE8AFA2387A84E007E1556 /* XCRemoteSwiftPackageReference "GenerateNonRecurringRandomNumbers" */,
+			);
 			productRefGroup = 6ED015DA2379FAB2004B9DD7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -598,6 +610,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67EE8AF72387A3D3007E1556 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
+			};
+		};
+		67EE8AFA2387A84E007E1556 /* XCRemoteSwiftPackageReference "GenerateNonRecurringRandomNumbers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/interestingibis/GenerateNonRecurringRandomNumbers.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67EE8AF82387A3D3007E1556 /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67EE8AF72387A3D3007E1556 /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
+		67EE8AFB2387A84E007E1556 /* GenerateNonRecurringRandomNumbers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67EE8AFA2387A84E007E1556 /* XCRemoteSwiftPackageReference "GenerateNonRecurringRandomNumbers" */;
+			productName = GenerateNonRecurringRandomNumbers;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6ED015D12379FAB2004B9DD7 /* Project object */;
 }

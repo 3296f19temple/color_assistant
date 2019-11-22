@@ -33,7 +33,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         captureSession.sessionPreset = .hd4K3840x2160
         previewViewSetup()
         takePhotoButtonSetup()
-        captureImageViewSetup()
+        
         guard let backCamera = AVCaptureDevice.default(for: .video) else {
             print("Unable to access back Camera")
             return
@@ -66,7 +66,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     
     func setupLivePreview() {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.videoGravity = .resize
         previewView.layer.addSublayer(videoPreviewLayer)
     }
     
@@ -83,13 +83,14 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     func takePhotoButtonSetup() {
         view.addSubview(takePhotoButton)
         takePhotoButton.translatesAutoresizingMaskIntoConstraints = false
-        takePhotoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        takePhotoButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        takePhotoButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        takePhotoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        takePhotoButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        takePhotoButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         takePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         takePhotoButton.addTarget(self, action: #selector(takePhotoButtonTapped), for: .touchUpInside)
-        takePhotoButton.backgroundColor = .red
-        takePhotoButton.setTitle("Capture", for: .normal)
+        //takePhotoButton.backgroundColor = .red
+        takePhotoButton.setImage(UIImage(named: "shotButton"), for: .normal)
+        //takePhotoButton.setTitle("Capture", for: .normal)
         
     }
     
@@ -106,22 +107,29 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         
         let image = UIImage(data: imageData)
-        captureImageView.image = image
+        let vc = OutputVC()
+        vc.outputImage = image!
+        present(vc, animated: true, completion: nil)
+        captureImageViewSetup()
+        //captureImageView.image = image
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.captureSession.stopRunning()
+        
     }
     
     func captureImageViewSetup() {
         view.addSubview(captureImageView)
         captureImageView.translatesAutoresizingMaskIntoConstraints = false
-        captureImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        captureImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        captureImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        captureImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        //captureImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //captureImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        captureImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        captureImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        captureImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        captureImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
     
 

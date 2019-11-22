@@ -15,8 +15,10 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 	func setupColorWheel(HTML:String) {
 			view.addSubview(wheel)
 			wheel.translatesAutoresizingMaskIntoConstraints = false
-			wheel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
-			wheel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        wheel.bottomAnchor.constraint(equalTo: openCamera.topAnchor, constant: -20).isActive = true
+        wheel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+			//wheel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+			//wheel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
 			wheel.heightAnchor.constraint(equalToConstant: 200).isActive = true
 			wheel.widthAnchor.constraint(equalToConstant: 200).isActive = true
 			
@@ -24,7 +26,8 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			wheel.loadHTMLString(HTML, baseURL: nil)
 			//wheel.frame = wheelsize
 			wheel.center = view.center
-			
+            wheel.backgroundColor = .clear
+            wheel.isOpaque = true
 		}
 		
 	
@@ -232,10 +235,14 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 		openCamera.translatesAutoresizingMaskIntoConstraints = false
 		openCamera.heightAnchor.constraint(equalToConstant: 50).isActive = true
 		openCamera.widthAnchor.constraint(equalToConstant: 200).isActive = true
-		openCamera.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-		openCamera.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+		//openCamera.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+		//openCamera.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        openCamera.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        openCamera.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		openCamera.backgroundColor = .blue
 		openCamera.addTarget(self, action: #selector(openCameraClicked), for: .touchUpInside)
+        openCamera.setTitle("Camera", for: .normal)
+        openCamera.setTitleColor(.white, for: .normal)
 		//openCamera.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		//openCamera.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 	}

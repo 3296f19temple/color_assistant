@@ -31,9 +31,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "ca2-2.png",
+      "size" : "60x60",
       "scale" : "2x"
     },
     {
@@ -72,9 +71,8 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "ca2-1.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
@@ -83,9 +81,8 @@
       "scale" : "2x"
     },
     {
-      "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "ca2.png",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     },
     {

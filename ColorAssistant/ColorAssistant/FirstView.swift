@@ -11,7 +11,7 @@ import WebKit
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 	  let wheel = WKWebView()
-		
+
 	func setupColorWheel(HTML:String) {
 			view.addSubview(wheel)
 			wheel.translatesAutoresizingMaskIntoConstraints = false
@@ -21,17 +21,17 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			//wheel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
 			wheel.heightAnchor.constraint(equalToConstant: 200).isActive = true
 			wheel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-			
-			
+
+
 			wheel.loadHTMLString(HTML, baseURL: nil)
 			//wheel.frame = wheelsize
 			wheel.center = view.center
             wheel.backgroundColor = .clear
             wheel.isOpaque = true
 		}
-		
-	
-	
+
+
+
 	func wheelSetValue(r:CGFloat,g:CGFloat,b:CGFloat) -> String {
 		let HTML = """
 		<div class="color-space"></div>
@@ -60,17 +60,17 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 				var radius = canvas.width / 2;
 				var toRad = (2 * Math.PI) / 360;
 				var step = 1 / radius;
-				
+
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				
+
 				var cx = cy = radius;
 				for(var i = 0; i < 360; i += step) {
 					var rad = i * toRad;
 					var x = radius * Math.cos(rad),
 						y = radius * Math.sin(rad);
-					
+
 					ctx.strokeStyle = 'hsl(' + i + ', 100%, 50%)';
-				   
+
 					ctx.beginPath();
 					ctx.moveTo(radius, radius);
 					ctx.lineTo(cx + x, cy + y);
@@ -87,7 +87,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 				ctx.arc(cx, cy, radius, 0, Math.PI * 2, true);
 				ctx.closePath();
 				ctx.fill();
-				
+
 				// render the rainbow box here ----------
 			};
 
@@ -121,7 +121,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 					self.renderMouseCircle(x, y);
 				}, false);
 			};
-			
+
 			function rgbToHsv(r, g, b){
 				r = r/255, g = g/255, b = b/255;
 				var max = Math.max(r, g, b), min = Math.min(r, g, b);
@@ -143,11 +143,11 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 
 				return [h, s, v];
 			}
-			
+
 			this.plotRgb = function(r, g, b) {
 					var canvas = this.canvas;
 				var ctx = canvas.getContext('2d');
-				
+
 				var [h, s, v] = rgbToHsv(r, g, b);
 				var theta = h * 2 * Math.PI;
 				var maxRadius = canvas.width / 2;
@@ -180,12 +180,11 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         super.viewDidLoad()
 		//camera()
 		var image = img
-	
 		view.backgroundColor = .white
         setuplabel()
 		openCameraSetup()
-		
-	
+
+
     }
 	func camera()  {
 		let vc = UIImagePickerController()
@@ -204,10 +203,10 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         label.text = "Color Assistant"
         label.font = UIFont.boldSystemFont(ofSize: 36)
         //label.textColor = .red
-        
+
     }
-	
-	
+
+
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		picker.dismiss(animated: true)
 
@@ -215,17 +214,20 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			print("No image found")
 			return
 		}
-		
-		let centerColor = image.getCenterColor()
-		let breakColorComp = centerColor.cgColor.components
-		let r = breakColorComp![0]
-		let g = breakColorComp![1]
-		let b = breakColorComp![2]
+
+        let centX = Int(image.size.width / 2) - 15
+        let centY = Int(img.size.height / 2) - 15
+
+        let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
+		let breakColorComp = centerColor!.cgColor.components
+				let r = breakColorComp![0]
+				let g = breakColorComp![1]
+				let b = breakColorComp![2]
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
-			
-			self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))
-				self.label.text = centerColor.description
+					self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))
+                self.label.text = centerColor?.description
+
 			}
 		// print out the image size as a test
 		print(image.size)
@@ -246,16 +248,29 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 		//openCamera.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		//openCamera.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 	}
-    
+
 	@objc func openCameraClicked() {
 		print("Button Clicked")
 		camera()
 	}
-	
-	
+
+
 }
 extension UIImage {
-	func getPixelColor(pos: CGPoint) -> UIColor {
+    func averageColor(xCoord: Int, yCoord : Int) -> UIColor?{//returns average color within 30X30 square
+        guard let inputImage = CIImage(image: self) else { return nil }
+        let extentVector = CIVector(x: CGFloat(xCoord), y: CGFloat(yCoord), z: 30, w: 30)
+
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+    }
+	func getPixelColor(pos: CGPoint) -> UIColor {//Returns pixel color at position
 		let pixelData = self.cgImage!.dataProvider!.data
 		let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
 		let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
@@ -263,11 +278,11 @@ extension UIImage {
 		let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
 		let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
 		let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-		
+
 		return UIColor(red: r, green: g, blue: b, alpha: a)
-		
+
 	}
-	 func getCenterColor() -> UIColor {
+	 func getCenterColor() -> UIColor {//returns center pixel color value
 		let height = self.size.height
 		let width = self.size.width
 		let centerY = height/2

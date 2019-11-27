@@ -23,7 +23,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .hd1280x720
+		captureSession.sessionPreset = CompatabilityCheck().check()
         previewViewSetup()
         takePhotoButtonSetup()
         
@@ -108,7 +108,12 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         let image = UIImage(data: imageData)
         let vc = FirstView()
         vc.outputImage = image!
-		vc.modalPresentationStyle = .overCurrentContext
+		if #available(iOS 13, *) {
+			
+		} else {
+			vc.modalPresentationStyle = .overCurrentContext
+			
+		}
         present(vc, animated: true, completion: nil)
         captureImageViewSetup()
         vc.cardView.backgroundColor = image?.getCenterColor()

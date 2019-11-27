@@ -8,15 +8,46 @@
 
 import Foundation
 import DeviceInfo
+import AVFoundation
 class CompatabilityCheck {
-	func check() -> Bool {
-//		switch DeviceInformation.modelName {
-//		case "iPad Pro (12.9-inch)":
-//			return false
-//		default:
-//			return true
-//		}
-		return true
+	func check() -> AVCaptureSession.Preset{
+		print(DeviceInformation.modelName)
+		switch DeviceInformation.modelName {
+		case "iPhone 6s":
+			return .hd4K3840x2160
+		case "iPhone 5s":
+			return .hd1920x1080
+		case "iPhone 6 Plus":
+			return .hd1920x1080
+		case "iPhone 6s Plus":
+			return .hd4K3840x2160
+		case "iPhone 7":
+			return .hd4K3840x2160
+		case "iPhone 7 Plus":
+			return .hd4K3840x2160
+		case "iPhone SE":
+			return .hd4K3840x2160
+		case "iPhone 8":
+			return .hd4K3840x2160
+		case "iPhone 8 Plus":
+			return .hd4K3840x2160
+		case "iPhone X":
+			return .hd4K3840x2160
+		case "iPhone XS":
+			return .hd4K3840x2160
+		case "iPhone XS Max":
+			return .hd4K3840x2160
+		case "iPhone XR":
+			return .hd4K3840x2160
+		case "iPhone 11":
+			return .hd4K3840x2160
+		case "iPhone 11 Pro":
+			return .hd4K3840x2160
+		case "iPhone 11 Pro Max":
+			return .hd4K3840x2160
+		default:
+			return .high
+		}
 	}
 	
 }

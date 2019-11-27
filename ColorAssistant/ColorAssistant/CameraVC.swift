@@ -106,7 +106,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         
         let image = UIImage(data: imageData)
-        let vc = FirstView()
+        let vc = OutputVC()
         vc.outputImage = image!
 		if #available(iOS 13, *) {
 			

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 import AVFoundation
 
 class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
@@ -23,18 +22,12 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .hd4K3840x2160
+		captureSession = AVCaptureSession()
+		captureSession.sessionPreset = CompatabilityCheck().resolutionCompatability()
         previewViewSetup()
         takePhotoButtonSetup()
         
-        guard let backCamera = AVCaptureDevice.default(for: .video) else {
+		guard let backCamera = AVCaptureDevice.default(for: .video) else {
             print("Unable to access back Camera")
             return
         }
@@ -62,6 +55,12 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         DispatchQueue.main.async {
             self.videoPreviewLayer.frame = self.previewView.bounds
         }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     func setupLivePreview() {
@@ -109,6 +108,12 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         let image = UIImage(data: imageData)
         let vc = FirstView()
         vc.outputImage = image!
+		if #available(iOS 13, *) {
+			
+		} else {
+			vc.modalPresentationStyle = .overCurrentContext
+			
+		}
         present(vc, animated: true, completion: nil)
         captureImageViewSetup()
         vc.cardView.backgroundColor = image?.getCenterColor()

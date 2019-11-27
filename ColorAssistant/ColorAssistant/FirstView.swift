@@ -8,6 +8,7 @@
 
 import UIKit
 import Files
+import GRDB
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let label = UILabel()
@@ -51,12 +52,20 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 		}
 		
 		
-		image.save(UUID().uuidString)
+		let imageName = UUID().uuidString
+		let pathToImage = image.save(imageName)
 //		bundle.createFile(named: "image_\(image.description)")
         let centX = Int(image.size.width / 2) - 15
         let centY = Int(img.size.height / 2) - 15
         
         let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
+		let breakColorComponents = centerColor?.cgColor.components
+		let date = Date()
+		var war = Wardrobe(id: nil, name: imageName, path: pathToImage, red: breakColorComponents![0], green: breakColorComponents![1], blue: breakColorComponents![2], alpha: 1.0, dateAdded: date)
+		try! dbQueue.write { db in
+			try war.insert(db)
+		}
+		
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
                 self.label.text = centerColor?.description
@@ -119,11 +128,12 @@ extension UIImage {
 		return self.getPixelColor(pos: center)
 	}
 		/// Save PNG in the Documents directory
-		func save(_ name: String) {
+		func save(_ name: String) -> String {
 			let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
 			let url = URL(fileURLWithPath: path).appendingPathComponent(name)
 			try! self.pngData()?.write(to: url)
-			print("saved image at \(url)")
+			print("saved image at \(url.description)")
+			return url.description
 		}
 	
 

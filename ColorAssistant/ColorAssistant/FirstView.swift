@@ -28,10 +28,10 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 	  let wheel = WKWebView()
 
 	func setupColorWheel(HTML:String) {
-			view.addSubview(wheel)
+			cardView.addSubview(wheel)
 			wheel.translatesAutoresizingMaskIntoConstraints = false
-        wheel.bottomAnchor.constraint(equalTo: openCamera.topAnchor, constant: -20).isActive = true
-        wheel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        wheel.bottomAnchor.constraint(equalTo: cardView.topAnchor, constant: -20).isActive = true
+        wheel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor).isActive = true
 			//wheel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
 			//wheel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
 			wheel.heightAnchor.constraint(equalToConstant: 200).isActive = true
@@ -40,7 +40,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 
 			wheel.loadHTMLString(HTML, baseURL: nil)
 			//wheel.frame = wheelsize
-			wheel.center = view.center
+			wheel.center = cardView.center
             wheel.backgroundColor = .clear
             wheel.isOpaque = true
 		}
@@ -196,7 +196,23 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    override func viewDidLoad() {
+	fileprivate func colorWheel(_ image: UIImage) {
+		let centX = image.size.width/2
+		let centY = image.size.height/2
+		let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+		let breakColorComp = centerColor!.cgColor.components //need to break into array
+		let r = breakColorComp![0]//red
+		let g = breakColorComp![1]//green
+		let b = breakColorComp![2]//blue
+		DispatchQueue.main.async {
+			//self.view.backgroundColor = centerColor
+			self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
+			self.label.text = centerColor?.description
+			
+		}
+	}
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 		//camera()
 		var image = img
@@ -204,13 +220,30 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         
         cardViewSetup()
-        dismissButtonSetup()
-        
+		colorWheel(image)
+		if #available(iOS 13, *) {
+			
+		} else {
+			let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+			
+			downSwipe.direction = .down
+			cardView.addGestureRecognizer(downSwipe)
+			
+			
+		}
 
     }
     
     
-    
+	@objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+			
+		if (sender.direction == .down) {
+				print("Swipe down")
+			dismissButtonClicked()
+			
+		}
+			
+	}
     
     
     
@@ -249,27 +282,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @objc func dismissButtonClicked() {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
 	func camera()  {

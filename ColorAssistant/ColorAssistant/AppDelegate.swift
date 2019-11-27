@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		try! setupDatabase(application)
 		application.applicationSupportsShakeToEdit = true
 		window = UIWindow(frame: UIScreen.main.bounds)
-		window?.rootViewController = FirstView()//CameraVC()
+		window?.rootViewController = CameraVC()
 		window?.makeKeyAndVisible()
         return true
     }

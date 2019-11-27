@@ -12,12 +12,11 @@
 		67589BDB237EAA9F0087318A /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
 		67786D4C238DAA88009EA7B0 /* DeviceInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D4B238DAA88009EA7B0 /* DeviceInfo */; };
 		67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */; };
+		67786D51238F2FEA009EA7B0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D50238F2FEA009EA7B0 /* GRDB */; };
+		67786D54238F30C2009EA7B0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D53238F30C2009EA7B0 /* Files */; };
+		67786D56238F30F8009EA7B0 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D55238F30F8009EA7B0 /* AppDatabase.swift */; };
+		67786D58238F3101009EA7B0 /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D57238F3101009EA7B0 /* Wardrobe.swift */; };
 		678AE1C1237E08B100F9151C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678AE1C0237E08B100F9151C /* Example.swift */; };
-		67EE8AF92387A3D3007E1556 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 67EE8AF82387A3D3007E1556 /* Files */; };
-		67EE8AFF2387AC39007E1556 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 67EE8AFE2387AC39007E1556 /* GRDB */; };
-		67EE8B012387ACEB007E1556 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE8B002387ACEB007E1556 /* AppDatabase.swift */; };
-		67EE8B022387AE55007E1556 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE8B002387ACEB007E1556 /* AppDatabase.swift */; };
-		67EE8B052387B291007E1556 /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE8B032387AF20007E1556 /* Wardrobe.swift */; };
 		6E01124A2388677F00DF210B /* OutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0112492388677F00DF210B /* OutputVC.swift */; };
 		6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */; };
 		6ED015E32379FAB4004B9DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED015E22379FAB4004B9DD7 /* Assets.xcassets */; };
@@ -52,9 +51,9 @@
 		67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssistantTests.swift; sourceTree = "<group>"; };
 		67589BD5237EAA7B0087318A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatabilityCheck.swift; sourceTree = "<group>"; };
+		67786D55238F30F8009EA7B0 /* AppDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		67786D57238F3101009EA7B0 /* Wardrobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
 		678AE1C0237E08B100F9151C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		67EE8B002387ACEB007E1556 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		67EE8B032387AF20007E1556 /* Wardrobe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
 		6E0112492388677F00DF210B /* OutputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputVC.swift; sourceTree = "<group>"; };
 		6ED015D92379FAB2004B9DD7 /* ColorAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,9 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67EE8AF92387A3D3007E1556 /* Files in Frameworks */,
-				67EE8AFF2387AC39007E1556 /* GRDB in Frameworks */,
+				67786D54238F30C2009EA7B0 /* Files in Frameworks */,
 				67786D4C238DAA88009EA7B0 /* DeviceInfo in Frameworks */,
+				67786D51238F2FEA009EA7B0 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,11 +135,11 @@
 			isa = PBXGroup;
 			children = (
 				6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */,
+				67786D55238F30F8009EA7B0 /* AppDatabase.swift */,
 				678AE1C0237E08B100F9151C /* Example.swift */,
-				67EE8B032387AF20007E1556 /* Wardrobe.swift */,
 				6ED0160E2379FCE6004B9DD7 /* FirstView.swift */,
-				67EE8B002387ACEB007E1556 /* AppDatabase.swift */,
 				6ED01615237F7BEE004B9DD7 /* CameraVC.swift */,
+				67786D57238F3101009EA7B0 /* Wardrobe.swift */,
 				6E0112492388677F00DF210B /* OutputVC.swift */,
 				6ED015E22379FAB4004B9DD7 /* Assets.xcassets */,
 				6ED015E72379FAB4004B9DD7 /* LaunchScreen.storyboard */,
@@ -212,9 +211,9 @@
 			);
 			name = ColorAssistant;
 			packageProductDependencies = (
-				67EE8AF82387A3D3007E1556 /* Files */,
-				67EE8AFE2387AC39007E1556 /* GRDB */,
 				67786D4B238DAA88009EA7B0 /* DeviceInfo */,
+				67786D50238F2FEA009EA7B0 /* GRDB */,
+				67786D53238F30C2009EA7B0 /* Files */,
 			);
 			productName = ColorAssistant;
 			productReference = 6ED015D92379FAB2004B9DD7 /* ColorAssistant.app */;
@@ -253,9 +252,9 @@
 			);
 			mainGroup = 6ED015D02379FAB2004B9DD7;
 			packageReferences = (
-				67EE8AF72387A3D3007E1556 /* XCRemoteSwiftPackageReference "Files" */,
-				67EE8AFD2387AC39007E1556 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */,
+				67786D4F238F2FEA009EA7B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				67786D52238F30C2009EA7B0 /* XCRemoteSwiftPackageReference "Files" */,
 			);
 			productRefGroup = 6ED015DA2379FAB2004B9DD7 /* Products */;
 			projectDirPath = "";
@@ -300,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67EE8B012387ACEB007E1556 /* AppDatabase.swift in Sources */,
 				67589BB8237EAA420087318A /* ColorAssistantUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,11 +319,11 @@
 				678AE1C1237E08B100F9151C /* Example.swift in Sources */,
 				67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */,
 				6E01124A2388677F00DF210B /* OutputVC.swift in Sources */,
+				67786D56238F30F8009EA7B0 /* AppDatabase.swift in Sources */,
 				6ED01616237F7BEE004B9DD7 /* CameraVC.swift in Sources */,
 				6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */,
 				6ED0160F2379FCE6004B9DD7 /* FirstView.swift in Sources */,
-				67EE8B052387B291007E1556 /* Wardrobe.swift in Sources */,
-				67EE8B022387AE55007E1556 /* AppDatabase.swift in Sources */,
+				67786D58238F3101009EA7B0 /* Wardrobe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +469,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -532,6 +531,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -559,7 +559,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorAssistant/Preview Content\"";
 				DEVELOPMENT_TEAM = N6ESLEE34B;
 				ENABLE_PREVIEWS = YES;
@@ -580,7 +579,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorAssistant/Preview Content\"";
 				DEVELOPMENT_TEAM = N6ESLEE34B;
 				ENABLE_PREVIEWS = YES;
@@ -638,20 +636,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		67EE8AF72387A3D3007E1556 /* XCRemoteSwiftPackageReference "Files" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JohnSundell/Files.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.2;
-			};
-		};
-		67EE8AFD2387AC39007E1556 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/groue/GRDB.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.6.2;
 		67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/interestingibis/DeviceInfo.git";
@@ -660,22 +644,39 @@
 				kind = branch;
 			};
 		};
+		67786D4F238F2FEA009EA7B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.2;
+			};
+		};
+		67786D52238F30C2009EA7B0 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:JohnSundell/Files.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		67EE8AF82387A3D3007E1556 /* Files */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67EE8AF72387A3D3007E1556 /* XCRemoteSwiftPackageReference "Files" */;
-			productName = Files;
-		};
-		67EE8AFE2387AC39007E1556 /* GRDB */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67EE8AFD2387AC39007E1556 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
-			productName = GRDB;
 		67786D4B238DAA88009EA7B0 /* DeviceInfo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */;
 			productName = DeviceInfo;
+		};
+		67786D50238F2FEA009EA7B0 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67786D4F238F2FEA009EA7B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		67786D53238F30C2009EA7B0 /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67786D52238F30C2009EA7B0 /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

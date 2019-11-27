@@ -10,7 +10,7 @@ import Foundation
 import DeviceInfo
 import AVFoundation
 class CompatabilityCheck {
-	func check() -> AVCaptureSession.Preset{
+	func resolutionCompatability() -> AVCaptureSession.Preset{
 		print(DeviceInformation.modelName)
 		switch DeviceInformation.modelName {
 		case "iPhone 6s":

@@ -339,7 +339,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 		
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
-					self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))
+					self.setupColorWheel(HTML: self.wheelSetValue(r: breakColorComponents![0], g: breakColorComponents![1], b: breakColorComponents![2]))
                 self.label.text = centerColor?.description
 
 			}

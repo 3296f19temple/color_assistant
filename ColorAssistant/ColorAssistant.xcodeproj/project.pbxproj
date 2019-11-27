@@ -13,9 +13,9 @@
 		67786D4C238DAA88009EA7B0 /* DeviceInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D4B238DAA88009EA7B0 /* DeviceInfo */; };
 		67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */; };
 		67786D51238F2FEA009EA7B0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D50238F2FEA009EA7B0 /* GRDB */; };
-		67786D54238F30C2009EA7B0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D53238F30C2009EA7B0 /* Files */; };
 		67786D56238F30F8009EA7B0 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D55238F30F8009EA7B0 /* AppDatabase.swift */; };
 		67786D58238F3101009EA7B0 /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D57238F3101009EA7B0 /* Wardrobe.swift */; };
+		67786D5B238F347D009EA7B0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D5A238F347D009EA7B0 /* Files */; };
 		678AE1C1237E08B100F9151C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678AE1C0237E08B100F9151C /* Example.swift */; };
 		6E01124A2388677F00DF210B /* OutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0112492388677F00DF210B /* OutputVC.swift */; };
 		6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */; };
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67786D54238F30C2009EA7B0 /* Files in Frameworks */,
+				67786D5B238F347D009EA7B0 /* Files in Frameworks */,
 				67786D4C238DAA88009EA7B0 /* DeviceInfo in Frameworks */,
 				67786D51238F2FEA009EA7B0 /* GRDB in Frameworks */,
 			);
@@ -213,7 +213,7 @@
 			packageProductDependencies = (
 				67786D4B238DAA88009EA7B0 /* DeviceInfo */,
 				67786D50238F2FEA009EA7B0 /* GRDB */,
-				67786D53238F30C2009EA7B0 /* Files */,
+				67786D5A238F347D009EA7B0 /* Files */,
 			);
 			productName = ColorAssistant;
 			productReference = 6ED015D92379FAB2004B9DD7 /* ColorAssistant.app */;
@@ -254,7 +254,7 @@
 			packageReferences = (
 				67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */,
 				67786D4F238F2FEA009EA7B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
-				67786D52238F30C2009EA7B0 /* XCRemoteSwiftPackageReference "Files" */,
+				67786D59238F347D009EA7B0 /* XCRemoteSwiftPackageReference "Files" */,
 			);
 			productRefGroup = 6ED015DA2379FAB2004B9DD7 /* Products */;
 			projectDirPath = "";
@@ -652,9 +652,9 @@
 				minimumVersion = 4.6.2;
 			};
 		};
-		67786D52238F30C2009EA7B0 /* XCRemoteSwiftPackageReference "Files" */ = {
+		67786D59238F347D009EA7B0 /* XCRemoteSwiftPackageReference "Files" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:JohnSundell/Files.git";
+			repositoryURL = "https://github.com/JohnSundell/Files.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.2;
@@ -673,9 +673,9 @@
 			package = 67786D4F238F2FEA009EA7B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
 			productName = GRDB;
 		};
-		67786D53238F30C2009EA7B0 /* Files */ = {
+		67786D5A238F347D009EA7B0 /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 67786D52238F30C2009EA7B0 /* XCRemoteSwiftPackageReference "Files" */;
+			package = 67786D59238F347D009EA7B0 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -25,6 +25,7 @@ class OutputVC: UIViewController {
     let colorDetails = UIView()
     let saveButton = UIButton()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var image = img
@@ -32,7 +33,7 @@ class OutputVC: UIViewController {
         cardViewSetup()
         colorWheelEnvelopSetup()
         colorWheel(image)
-        //colorViewSetup()
+        colorViewSetup()
         colorDetailsSetup()
         copyButtonSetup()
         colorLabelSetup()
@@ -63,7 +64,7 @@ class OutputVC: UIViewController {
     func colorDetailsSetup() {
         cardView.addSubview(colorDetails)
         colorDetails.translatesAutoresizingMaskIntoConstraints = false
-        colorDetails.topAnchor.constraint(equalTo: colorWheelEnvelop.topAnchor).isActive = true
+        colorDetails.topAnchor.constraint(equalTo: colorView.bottomAnchor).isActive = true
         colorDetails.leadingAnchor.constraint(equalTo: colorWheelEnvelop.trailingAnchor, constant: 10).isActive = true
         colorDetails.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10).isActive = true
         colorDetails.bottomAnchor.constraint(equalTo: colorWheelEnvelop.bottomAnchor).isActive = true
@@ -84,21 +85,21 @@ class OutputVC: UIViewController {
         red.translatesAutoresizingMaskIntoConstraints = false
         red.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
         red.topAnchor.constraint(equalTo: colorDetails.topAnchor, constant: 10).isActive = true
-        //red.text = "Red \(r)%"
+        red.text = "Red 69%"
         red.textColor = .black
         
         colorDetails.addSubview(green)
         green.translatesAutoresizingMaskIntoConstraints = false
         green.topAnchor.constraint(equalTo: red.bottomAnchor, constant: 10).isActive = true
         green.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
-        //green.text = "Green \(g)%"
+        green.text = "Green 69%"
         green.textColor = .black
         
         colorDetails.addSubview(blue)
         blue.translatesAutoresizingMaskIntoConstraints = false
         blue.topAnchor.constraint(equalTo: green.bottomAnchor, constant: 10).isActive = true
         blue.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
-        //blue.text = "Blue \(b)%"
+        blue.text = "Blue 69%"
         blue.textColor = .black
         
     }
@@ -121,7 +122,9 @@ class OutputVC: UIViewController {
         colorView.topAnchor.constraint(equalTo: colorWheelEnvelop.topAnchor).isActive = true
         colorView.leadingAnchor.constraint(equalTo: colorWheelEnvelop.trailingAnchor, constant: 10).isActive = true
         colorView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10).isActive = true
-        colorView.bottomAnchor.constraint(equalTo: colorWheelEnvelop.bottomAnchor).isActive = true
+        colorView.heightAnchor.constraint(equalTo: colorView.widthAnchor, multiplier: 1) .isActive = true
+        colorView.layer.cornerRadius = colorView.bounds.width
+        colorView.layer.masksToBounds = true
         colorView.backgroundColor = outputImage.getCenterColor()
     }
     
@@ -141,6 +144,8 @@ class OutputVC: UIViewController {
     @objc func copyButtonClicked(){
         copyButton.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
         copyButton.setTitle("Copied", for: .normal)
+        let pasteBoard = UIPasteboard.general
+        pasteBoard.string = "\(colorLabel.text!)"
     }
 
     
@@ -151,7 +156,6 @@ class OutputVC: UIViewController {
         colorLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor).isActive = true
         colorLabel.centerYAnchor.constraint(equalTo: copyButton.centerYAnchor).isActive = true
         colorLabel.text = "nil"
-        colorLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         colorLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
         colorLabel.font = UIFont.boldSystemFont(ofSize: 40)
     }
@@ -200,7 +204,7 @@ class OutputVC: UIViewController {
         cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         cardView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         cardView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45).isActive = true
         cardView.backgroundColor = .white
         cardView.layer.cornerRadius = 20
     }

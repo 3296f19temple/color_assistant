@@ -22,6 +22,8 @@ class OutputVC: UIViewController {
     let colorView = UIView()
     let colorWheelEnvelop = UIView()
     let colorNameLabel = UILabel()
+    let colorDetails = UIView()
+    let saveButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +33,66 @@ class OutputVC: UIViewController {
         colorWheelEnvelopSetup()
         colorWheel(image)
         //colorViewSetup()
+        colorDetailsSetup()
         copyButtonSetup()
         colorLabelSetup()
         colorNameLabelSetup()
+        saveButtonSetup()
         dismissButtonSetup()
     }
+    
+    func saveButtonSetup(){
+        cardView.addSubview(saveButton)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 10).isActive = true
+        saveButton.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10).isActive = true
+        saveButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        saveButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        saveButton.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.4705882353, blue: 0.4509803922, alpha: 1)
+        saveButton.layer.cornerRadius = 10
+        saveButton.setTitle("Save", for: .normal)
+        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func saveButtonClicked(){
+        saveButton.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
+        saveButton.setTitle("Saved", for: .normal)
+    }
+    
+    func colorDetailsSetup() {
+        cardView.addSubview(colorDetails)
+        colorDetails.translatesAutoresizingMaskIntoConstraints = false
+        colorDetails.topAnchor.constraint(equalTo: colorWheelEnvelop.topAnchor).isActive = true
+        colorDetails.leadingAnchor.constraint(equalTo: colorWheelEnvelop.trailingAnchor, constant: 10).isActive = true
+        colorDetails.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10).isActive = true
+        colorDetails.bottomAnchor.constraint(equalTo: colorWheelEnvelop.bottomAnchor).isActive = true
+        //colorDetails.backgroundColor = outputImage.getCenterColor()
+        let red = UILabel()
+        let green = UILabel()
+        let blue = UILabel()
+        colorDetails.addSubview(red)
+        red.translatesAutoresizingMaskIntoConstraints = false
+        red.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
+        red.topAnchor.constraint(equalTo: colorDetails.topAnchor, constant: 10).isActive = true
+        red.text = "Red 97%"
+        red.textColor = .black
+        
+        colorDetails.addSubview(green)
+        green.translatesAutoresizingMaskIntoConstraints = false
+        green.topAnchor.constraint(equalTo: red.bottomAnchor, constant: 10).isActive = true
+        green.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
+        green.text = "Green 97%"
+        green.textColor = .black
+        
+        colorDetails.addSubview(blue)
+        blue.translatesAutoresizingMaskIntoConstraints = false
+        blue.topAnchor.constraint(equalTo: green.bottomAnchor, constant: 10).isActive = true
+        blue.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
+        blue.text = "Blue 97%"
+        blue.textColor = .black
+        
+    }
+    
     
     func colorNameLabelSetup(){
         cardView.addSubview(colorNameLabel)
@@ -68,7 +125,14 @@ class OutputVC: UIViewController {
         copyButton.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.4705882353, blue: 0.4509803922, alpha: 1)
         copyButton.layer.cornerRadius = 10
         copyButton.setTitle("Copy", for: .normal)
+        copyButton.addTarget(self, action: #selector(copyButtonClicked), for: .touchUpInside)
     }
+    
+    @objc func copyButtonClicked(){
+        copyButton.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
+        copyButton.setTitle("Copied", for: .normal)
+    }
+
     
     func colorLabelSetup() {
         cardView.addSubview(colorLabel)

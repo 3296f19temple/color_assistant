@@ -57,6 +57,7 @@ class OutputVC: UIViewController {
     @objc func saveButtonClicked(){
         saveButton.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
         saveButton.setTitle("Saved", for: .normal)
+        UIImageWriteToSavedPhotosAlbum(outputImage, nil, nil, nil);
     }
     
     func colorDetailsSetup() {
@@ -70,25 +71,34 @@ class OutputVC: UIViewController {
         let red = UILabel()
         let green = UILabel()
         let blue = UILabel()
+        
+        let centX = outputImage.size.width/2
+        let centY = outputImage.size.height/2
+        let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+        let breakColorComp = centerColor!.cgColor.components //need to break into array
+        let r = breakColorComp![0]//red
+        let g = breakColorComp![1]//green
+        let b = breakColorComp![2]//blue
+        
         colorDetails.addSubview(red)
         red.translatesAutoresizingMaskIntoConstraints = false
         red.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
         red.topAnchor.constraint(equalTo: colorDetails.topAnchor, constant: 10).isActive = true
-        red.text = "Red 97%"
+        //red.text = "Red \(r)%"
         red.textColor = .black
         
         colorDetails.addSubview(green)
         green.translatesAutoresizingMaskIntoConstraints = false
         green.topAnchor.constraint(equalTo: red.bottomAnchor, constant: 10).isActive = true
         green.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
-        green.text = "Green 97%"
+        //green.text = "Green \(g)%"
         green.textColor = .black
         
         colorDetails.addSubview(blue)
         blue.translatesAutoresizingMaskIntoConstraints = false
         blue.topAnchor.constraint(equalTo: green.bottomAnchor, constant: 10).isActive = true
         blue.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
-        blue.text = "Blue 97%"
+        //blue.text = "Blue \(b)%"
         blue.textColor = .black
         
     }

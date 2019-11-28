@@ -106,7 +106,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         
         let image = UIImage(data: imageData)
-        let vc = FirstView()
+        let vc = OutputVC()
         vc.outputImage = image!
 		vc.img = image!
 		if #available(iOS 13, *) {
@@ -117,7 +117,8 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
 		}
         present(vc, animated: true, completion: nil)
         captureImageViewSetup()
-        vc.cardView.backgroundColor = image?.getCenterColor()
+        vc.outputImage = image!
+        //vc.cardView.backgroundColor = image?.getCenterColor()
         //captureImageView.image = image
         
     }

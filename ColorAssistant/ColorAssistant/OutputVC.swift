@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class OutputVC: UIViewController {
 
@@ -14,12 +15,84 @@ class OutputVC: UIViewController {
     var outputImage = UIImage()
     let cardView = UIView()
     let dismissButton = UIButton()
+    let wheel = WKWebView()
+    var img = #imageLiteral(resourceName: "stacked")
+    let colorLabel = UILabel()
+    let copyButton = UIButton()
+    let colorView = UIView()
+    let colorWheelEnvelop = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var image = img
         //captureImageViewSetup()
         cardViewSetup()
+        colorWheelEnvelopSetup()
+        colorWheel(image)
+        colorLabelSetup()
+        colorViewSetup()
+        copyButtonSetup()
         dismissButtonSetup()
+    }
+    
+    func colorViewSetup() {
+        cardView.addSubview(colorView)
+        colorView.translatesAutoresizingMaskIntoConstraints = false
+        colorView.topAnchor.constraint(equalTo: colorWheelEnvelop.topAnchor).isActive = true
+        colorView.leadingAnchor.constraint(equalTo: colorWheelEnvelop.trailingAnchor, constant: 10).isActive = true
+        colorView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10).isActive = true
+        colorView.bottomAnchor.constraint(equalTo: colorWheelEnvelop.bottomAnchor).isActive = true
+        colorView.backgroundColor = outputImage.getCenterColor()
+    }
+    
+    func copyButtonSetup() {
+        cardView.addSubview(copyButton)
+        copyButton.translatesAutoresizingMaskIntoConstraints = false
+        copyButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10).isActive = true
+        copyButton.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10).isActive = true
+        copyButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        copyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        copyButton.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.4705882353, blue: 0.4509803922, alpha: 1)
+        copyButton.layer.cornerRadius = 10
+        copyButton.setTitle("Copy", for: .normal)
+    }
+    
+    func colorLabelSetup() {
+        cardView.addSubview(colorLabel)
+        colorLabel.translatesAutoresizingMaskIntoConstraints = false
+        colorLabel.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10).isActive = true
+        colorLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20).isActive = true
+        colorLabel.text = "nil"
+        colorLabel.textColor = .black
+        colorLabel.font = UIFont.boldSystemFont(ofSize: 48)
+    }
+    
+    func colorWheelEnvelopSetup() {
+        cardView.addSubview(colorWheelEnvelop)
+        colorWheelEnvelop.translatesAutoresizingMaskIntoConstraints = false
+        colorWheelEnvelop.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -20).isActive = true
+        colorWheelEnvelop.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20).isActive = true
+        colorWheelEnvelop.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        colorWheelEnvelop.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        wheel.backgroundColor = .clear
+    }
+    
+    func setupColorWheel(HTML:String) {
+        colorWheelEnvelop.addSubview(wheel)
+        wheel.translatesAutoresizingMaskIntoConstraints = false
+        wheel.bottomAnchor.constraint(equalTo: colorWheelEnvelop.bottomAnchor).isActive = true
+        wheel.leadingAnchor.constraint(equalTo: colorWheelEnvelop.leadingAnchor).isActive = true
+        //wheel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor).isActive = true
+        //wheel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        //wheel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        wheel.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        wheel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        wheel.scrollView.isScrollEnabled = false
+        wheel.loadHTMLString(HTML, baseURL: nil)
+        //wheel.frame = wheelsize
+        wheel.center = cardView.center
+        wheel.backgroundColor = .clear
+        wheel.isOpaque = true
     }
     
     func captureImageViewSetup() {
@@ -57,5 +130,166 @@ class OutputVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    
+    fileprivate func colorWheel(_ image: UIImage) {
+        let centX = image.size.width/2
+        let centY = image.size.height/2
+        let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+        let breakColorComp = centerColor!.cgColor.components //need to break into array
+        let r = breakColorComp![0]//red
+        let g = breakColorComp![1]//green
+        let b = breakColorComp![2]//blue
+        DispatchQueue.main.async {
+            //self.view.backgroundColor = centerColor
+            self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
+            self.colorLabel.text = centerColor!.hexString
+            print(centerColor?.description)
+            print("Center color \(centerColor!.hexString)")
+            //self.label.text = centerColor?.description
+            
+        }
+    }
+    
+    func wheelSetValue(r:CGFloat,g:CGFloat,b:CGFloat) -> String {
+        let HTML = """
+        <div class="color-space"></div>
+        <script>function ColorPicker(element) {
+            this.element = element;
+
+            this.init = function() {
+                var diameter = this.element.offsetWidth;
+
+                var canvas = document.createElement('canvas');
+                canvas.height = diameter;
+                canvas.width = diameter,
+                this.canvas = canvas;
+
+                this.renderColorMap();
+
+                element.appendChild(canvas);
+
+                this.setupBindings();
+            };
+
+            this.renderColorMap = function() {
+                var canvas = this.canvas;
+                var ctx = canvas.getContext('2d');
+
+                var radius = canvas.width / 2;
+                var toRad = (2 * Math.PI) / 360;
+                var step = 1 / radius;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                var cx = cy = radius;
+                for(var i = 0; i < 360; i += step) {
+                    var rad = i * toRad;
+                    var x = radius * Math.cos(rad),
+                        y = radius * Math.sin(rad);
+
+                    ctx.strokeStyle = 'hsl(' + i + ', 100%, 50%)';
+
+                    ctx.beginPath();
+                    ctx.moveTo(radius, radius);
+                    ctx.lineTo(cx + x, cy + y);
+                    ctx.stroke();
+                }
+
+                        // draw saturation gradient
+                var grd = ctx.createRadialGradient(cx,cy,0,cx,cx,radius);
+                grd.addColorStop(0,"white");
+                      grd.addColorStop(1,'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = grd;
+                //ctx.fillStyle = 'rgb(255, 255, 255)';
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fill();
+
+                // render the rainbow box here ----------
+            };
+
+            this.renderMouseCircle = function(x, y) {
+                var canvas = this.canvas;
+                var ctx = canvas.getContext('2d');
+
+                ctx.strokeStyle = 'rgb(255, 255, 255)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
+                ctx.lineWidth = '3';
+                ctx.beginPath();
+                ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+            };
+
+            this.setupBindings = function() {
+                var canvas = this.canvas;
+                var ctx = canvas.getContext('2d');
+                var self = this;
+
+                canvas.addEventListener('click', function(e) {
+                    var x = e.offsetX || e.clientX - this.offsetLeft;
+                    var y = e.offsetY || e.clientY - this.offsetTop;
+
+                    var imgData = ctx.getImageData(x, y, 1, 1).data;
+                    //var selectedColor = new Color(imgData[0], imgData[1], imgData[2]);
+                    // do something with this
+
+                    self.renderMouseCircle(x, y);
+                }, false);
+            };
+
+            function rgbToHsv(r, g, b){
+                r = r/255, g = g/255, b = b/255;
+                var max = Math.max(r, g, b), min = Math.min(r, g, b);
+                var h, s, v = max;
+
+                var d = max - min;
+                s = max == 0 ? 0 : d / max;
+
+                if(max == min){
+                    h = 0; // achromatic
+                }else{
+                    switch(max){
+                        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                        case g: h = (b - r) / d + 2; break;
+                        case b: h = (r - g) / d + 4; break;
+                    }
+                    h /= 6;
+                }
+
+                return [h, s, v];
+            }
+
+            this.plotRgb = function(r, g, b) {
+                    var canvas = this.canvas;
+                var ctx = canvas.getContext('2d');
+
+                var [h, s, v] = rgbToHsv(r, g, b);
+                var theta = h * 2 * Math.PI;
+                var maxRadius = canvas.width / 2;
+                var r = s * maxRadius;
+                var x = r * Math.cos(theta) + maxRadius,
+                    y = r * Math.sin(theta) + maxRadius;
+                this.renderMouseCircle(x, y);
+            }
+
+            this.init();
+        }
+
+        var pick = new ColorPicker(document.querySelector('.color-space'));
+
+        var RGBList = [
+            {'r':\(r*255),'g':\(g*255),'b':\(b*255)}
+        ];
+
+        RGBList.forEach(function (color) {
+            pick.plotRgb(color.r, color.g, color.b);
+        })
+        </script>
+        """
+        return HTML
+    }
     
 }

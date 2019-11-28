@@ -21,6 +21,7 @@ class OutputVC: UIViewController {
     let copyButton = UIButton()
     let colorView = UIView()
     let colorWheelEnvelop = UIView()
+    let colorNameLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,22 @@ class OutputVC: UIViewController {
         cardViewSetup()
         colorWheelEnvelopSetup()
         colorWheel(image)
-        colorLabelSetup()
-        colorViewSetup()
+        //colorViewSetup()
         copyButtonSetup()
+        colorLabelSetup()
+        colorNameLabelSetup()
         dismissButtonSetup()
+    }
+    
+    func colorNameLabelSetup(){
+        cardView.addSubview(colorNameLabel)
+        colorNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        colorNameLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor).isActive = true
+        //colorNameLabel.leadingAnchor.constraint(equalTo: colorLabel.leadingAnchor).isActive = true
+        colorNameLabel.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: 2).isActive = true
+        colorNameLabel.text = "Color Name"
+        colorNameLabel.font = UIFont.systemFont(ofSize: 25)
+        colorNameLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
     }
     
     func colorViewSetup() {
@@ -50,7 +63,7 @@ class OutputVC: UIViewController {
         copyButton.translatesAutoresizingMaskIntoConstraints = false
         copyButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10).isActive = true
         copyButton.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10).isActive = true
-        copyButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        copyButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         copyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         copyButton.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.4705882353, blue: 0.4509803922, alpha: 1)
         copyButton.layer.cornerRadius = 10
@@ -60,11 +73,13 @@ class OutputVC: UIViewController {
     func colorLabelSetup() {
         cardView.addSubview(colorLabel)
         colorLabel.translatesAutoresizingMaskIntoConstraints = false
-        colorLabel.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10).isActive = true
-        colorLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20).isActive = true
+        //colorLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20).isActive = true
+        colorLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor).isActive = true
+        colorLabel.centerYAnchor.constraint(equalTo: copyButton.centerYAnchor).isActive = true
         colorLabel.text = "nil"
-        colorLabel.textColor = .black
-        colorLabel.font = UIFont.boldSystemFont(ofSize: 48)
+        colorLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        colorLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
+        colorLabel.font = UIFont.boldSystemFont(ofSize: 40)
     }
     
     func colorWheelEnvelopSetup() {
@@ -143,10 +158,6 @@ class OutputVC: UIViewController {
             //self.view.backgroundColor = centerColor
             self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
             self.colorLabel.text = centerColor!.hexString
-            print(centerColor?.description)
-            print("Center color \(centerColor!.hexString)")
-            //self.label.text = centerColor?.description
-            
         }
     }
     

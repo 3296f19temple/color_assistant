@@ -85,21 +85,21 @@ class OutputVC: UIViewController {
         red.translatesAutoresizingMaskIntoConstraints = false
         red.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
         red.topAnchor.constraint(equalTo: colorDetails.topAnchor, constant: 10).isActive = true
-        red.text = "Red \(Int(r*100))%"
+        red.text = "Red 69%"
         red.textColor = .black
         
         colorDetails.addSubview(green)
         green.translatesAutoresizingMaskIntoConstraints = false
         green.topAnchor.constraint(equalTo: red.bottomAnchor, constant: 10).isActive = true
         green.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
-        green.text = "Green \(Int(g*100))%"
+        green.text = "Green 69%"
         green.textColor = .black
         
         colorDetails.addSubview(blue)
         blue.translatesAutoresizingMaskIntoConstraints = false
         blue.topAnchor.constraint(equalTo: green.bottomAnchor, constant: 10).isActive = true
         blue.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
-        blue.text = "Blue \(Int(b*100))%"
+        blue.text = "Blue 69%"
         blue.textColor = .black
         
     }

@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		67589BB8237EAA420087318A /* ColorAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BB7237EAA420087318A /* ColorAssistantUITests.swift */; };
 		67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */; };
 		67589BDB237EAA9F0087318A /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
-		67786D4C238DAA88009EA7B0 /* DeviceInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D4B238DAA88009EA7B0 /* DeviceInfo */; };
 		67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */; };
 		678AE1C1237E08B100F9151C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678AE1C0237E08B100F9151C /* Example.swift */; };
 		6E01124A2388677F00DF210B /* OutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0112492388677F00DF210B /* OutputVC.swift */; };
@@ -80,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67786D4C238DAA88009EA7B0 /* DeviceInfo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +202,6 @@
 			);
 			name = ColorAssistant;
 			packageProductDependencies = (
-				67786D4B238DAA88009EA7B0 /* DeviceInfo */,
 			);
 			productName = ColorAssistant;
 			productReference = 6ED015D92379FAB2004B9DD7 /* ColorAssistant.app */;
@@ -243,7 +240,6 @@
 			);
 			mainGroup = 6ED015D02379FAB2004B9DD7;
 			packageReferences = (
-				67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */,
 			);
 			productRefGroup = 6ED015DA2379FAB2004B9DD7 /* Products */;
 			projectDirPath = "";
@@ -481,6 +477,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -535,6 +532,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -620,25 +618,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/interestingibis/DeviceInfo.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		67786D4B238DAA88009EA7B0 /* DeviceInfo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67786D4A238DAA88009EA7B0 /* XCRemoteSwiftPackageReference "DeviceInfo" */;
-			productName = DeviceInfo;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6ED015D12379FAB2004B9DD7 /* Project object */;
 }

@@ -196,7 +196,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
 	fileprivate func colorWheel(_ image: UIImage) {
 		let centX = image.size.width/2
-		let centY = image.size.height/2
+        let centY = image.size.height/2
 		let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
 		let breakColorComp = centerColor!.cgColor.components //need to break into array
 		let r = breakColorComp![0]//red
@@ -320,10 +320,10 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			return
 		}
 
-        let centX = Int(image.size.width / 2) - 15
-        let centY = Int(img.size.height / 2) - 15
+        let centX = Int(img.size.width / 2) - 10
+        let centY = Int(img.size.height / 2) - 10
 
-        let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
+        let centerColor = img.averageColor(xCoord: centX, yCoord: centY)
 		let breakColorComp = centerColor!.cgColor.components
 				let r = breakColorComp![0]
 				let g = breakColorComp![1]
@@ -364,7 +364,7 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 extension UIImage {
     func averageColor(xCoord: Int, yCoord : Int) -> UIColor?{//returns average color within 30X30 square
         guard let inputImage = CIImage(image: self) else { return nil }
-        let extentVector = CIVector(x: CGFloat(xCoord), y: CGFloat(yCoord), z: 30, w: 30)
+        let extentVector = CIVector(x: CGFloat(xCoord), y: CGFloat(yCoord), z: 20, w: 20)
 
         guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
         guard let outputImage = filter.outputImage else { return nil }

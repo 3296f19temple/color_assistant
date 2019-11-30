@@ -24,7 +24,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		captureSession = AVCaptureSession()
-		captureSession.sessionPreset = CompatabilityCheck().resolutionCompatability()
+		captureSession.sessionPreset = .high//CompatabilityCheck().resolutionCompatability()
         previewViewSetup()
         takePhotoButtonSetup()
         crosshairSetup()

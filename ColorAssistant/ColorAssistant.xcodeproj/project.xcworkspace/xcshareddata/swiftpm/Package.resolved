@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "DeviceInfo",
-        "repositoryURL": "https://github.com/interestingibis/DeviceInfo.git",
+        "package": "CSQLite",
+        "repositoryURL": "https://github.com/groue/CSQLite.git",
         "state": {
-          "branch": "master",
-          "revision": "726f388fea972b55e0bd8673f678c5c0257f98ca",
-          "version": null
+          "branch": null,
+          "revision": "3a405d0ebd8bf07d4c41a8b05a203e4d03415b5b",
+          "version": "0.3.0"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/groue/GRDB.swift.git",
         "state": {
           "branch": null,
-          "revision": "a67070dd9a08dad455e9f2895a0c40921d31fa1c",
-          "version": "4.6.2"
+          "revision": "aa157a77d20133d3ca1757343c2e27831e5d5fa7",
+          "version": "4.4.0"
         }
       }
     ]

@@ -73,9 +73,9 @@ class OutputVC: UIViewController {
         let green = UILabel()
         let blue = UILabel()
         
-        let centX = outputImage.size.width/2
-        let centY = outputImage.size.height/2
-        let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+        let centX = (outputImage.size.width/2) - 10
+        let centY = (outputImage.size.height/2) - 20
+        let centerColor = outputImage.averageColor(xCoord: Int(centY), yCoord: Int(centX))
         let breakColorComp = centerColor!.cgColor.components //need to break into array
         let r = breakColorComp![0]//red
         let g = breakColorComp![1]//green
@@ -125,7 +125,10 @@ class OutputVC: UIViewController {
         colorView.heightAnchor.constraint(equalTo: colorView.widthAnchor, multiplier: 1) .isActive = true
         colorView.layer.cornerRadius = colorView.bounds.width
         colorView.layer.masksToBounds = true
-        colorView.backgroundColor = outputImage.getCenterColor()
+        let centX = (outputImage.size.width/2) - 10
+        let centY = (outputImage.size.height/2) - 10
+        let centerColor = outputImage.averageColor(xCoord: Int(centY), yCoord: Int(centX))
+        colorView.backgroundColor = centerColor
     }
     
     func copyButtonSetup() {

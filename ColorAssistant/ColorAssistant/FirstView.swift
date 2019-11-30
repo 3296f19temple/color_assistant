@@ -320,10 +320,11 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			return
 		}
 
-        let centX = Int(img.size.width / 2) - 10
-        let centY = Int(img.size.height / 2) - 10
+        let centX = Int(image.size.height / 2) - 10
+        let centY = Int(image.size.width / 2) - 10
 
-        let centerColor = img.averageColor(xCoord: centX, yCoord: centY)
+
+        let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
 		let breakColorComp = centerColor!.cgColor.components
 				let r = breakColorComp![0]
 				let g = breakColorComp![1]

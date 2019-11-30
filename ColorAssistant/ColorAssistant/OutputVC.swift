@@ -160,7 +160,7 @@ class OutputVC: UIViewController {
         colorLabel.centerYAnchor.constraint(equalTo: copyButton.centerYAnchor).isActive = true
         colorLabel.text = "nil"
         colorLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
-        colorLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        colorLabel.font = UIFont.boldSystemFont(ofSize: 30)
     }
     
     func colorWheelEnvelopSetup() {

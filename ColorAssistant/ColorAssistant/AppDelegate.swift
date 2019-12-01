@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import GRDB
+// The shared database queue
+var dbQueue: DatabaseQueue!
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,10 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			return true
 		}
 
-
-    // MARK: UISceneSession Lifecycle
-
-   
 
 }
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Files
+import GRDB
 import AVFoundation
 import WebKit
 class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -310,8 +312,8 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
         //label.textColor = .red
 
     }
-
-
+	
+	let bundle = try! Folder(path: Bundle.main.bundlePath)
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		picker.dismiss(animated: true)
 
@@ -319,18 +321,25 @@ class FirstView: UIViewController, UIImagePickerControllerDelegate, UINavigation
 			print("No image found")
 			return
 		}
-
+		
+		
+		let imageName = UUID().uuidString
+		let pathToImage = image.save(imageName)
+//		bundle.createFile(named: "image_\(image.description)")
         let centX = Int(image.size.width / 2) - 15
         let centY = Int(img.size.height / 2) - 15
 
         let centerColor = image.averageColor(xCoord: centX, yCoord: centY)
-		let breakColorComp = centerColor!.cgColor.components
-				let r = breakColorComp![0]
-				let g = breakColorComp![1]
-				let b = breakColorComp![2]
+		let breakColorComponents = centerColor?.cgColor.components
+		let date = Date()
+		var war = Wardrobe(id: nil, name: imageName, path: pathToImage, red: breakColorComponents![0], green: breakColorComponents![1], blue: breakColorComponents![2], alpha: 1.0, dateAdded: date)
+		try! dbQueue.write { db in
+			try war.insert(db)
+		}
+		
 		DispatchQueue.main.async {
 				self.view.backgroundColor = centerColor
-					self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))
+					self.setupColorWheel(HTML: self.wheelSetValue(r: breakColorComponents![0], g: breakColorComponents![1], b: breakColorComponents![2]))
                 self.label.text = centerColor?.description
 
 			}
@@ -395,6 +404,16 @@ extension UIImage {
 		let center: CGPoint = CGPoint(x: centerX, y: centerY)
 		return self.getPixelColor(pos: center)
 	}
+		/// Save PNG in the Documents directory
+		func save(_ name: String) -> String {
+			let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+			let url = URL(fileURLWithPath: path).appendingPathComponent(name)
+			try! self.pngData()?.write(to: url)
+			print("saved image at \(url.description)")
+			return url.description
+		}
+	
+
 }
 extension UIColor {
     var hexString: String {

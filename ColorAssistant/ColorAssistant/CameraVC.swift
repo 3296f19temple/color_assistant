@@ -119,7 +119,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         
         let image = UIImage(data: imageData)
         let vc = OutputVC()
-        vc.outputImage = image!
+		vc.outputImage = (image?.rotate(radians: .pi*2)!)!
 		vc.img = image!
 		if #available(iOS 13, *) {
 			

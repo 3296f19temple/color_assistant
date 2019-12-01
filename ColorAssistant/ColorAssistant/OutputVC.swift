@@ -28,11 +28,10 @@ class OutputVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var image = img
         //captureImageViewSetup()
         cardViewSetup()
         colorWheelEnvelopSetup()
-        colorWheel(image)
+        colorWheel(outputImage)
         colorViewSetup()
         colorDetailsSetup()
         copyButtonSetup()
@@ -75,7 +74,7 @@ class OutputVC: UIViewController {
         
         let centX = (outputImage.size.width/2) - 10
         let centY = (outputImage.size.height/2) - 10
-        let centerColor = outputImage.averageColor(xCoord: Int(centY), yCoord: Int(centX))
+        let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         let breakColorComp = centerColor!.cgColor.components //need to break into array
         let r = breakColorComp![0]//red
         let g = breakColorComp![1]//green
@@ -127,7 +126,7 @@ class OutputVC: UIViewController {
         colorView.layer.masksToBounds = true
         let centX = (outputImage.size.width/2) - 10
         let centY = (outputImage.size.height/2) - 10
-        let centerColor = outputImage.averageColor(xCoord: Int(centY), yCoord: Int(centX))
+        let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         colorView.backgroundColor = centerColor
     }
     
@@ -230,7 +229,7 @@ class OutputVC: UIViewController {
     fileprivate func colorWheel(_ image: UIImage) {
         let centX = image.size.width/2 - 10
         let centY = image.size.height/2 - 10
-        let centerColor = image.averageColor(xCoord: Int(centY), yCoord: Int(centX))
+        let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         let breakColorComp = centerColor!.cgColor.components //need to break into array
         let r = breakColorComp![0]//red
         let g = breakColorComp![1]//green

@@ -20,7 +20,27 @@ class OutputVC: UIViewController {
         //captureImageViewSetup()
         cardViewSetup()
         dismissButtonSetup()
+		if #available(iOS 13, *) {
+			
+		} else {
+			let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+			
+			downSwipe.direction = .down
+			cardView.addGestureRecognizer(downSwipe)
+			
+			
+		}
+
     }
+	@objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+			
+		if (sender.direction == .down) {
+				print("Swipe down")
+			dismissButtonClicked()
+			
+		}
+			
+	}
     
     func captureImageViewSetup() {
         view.addSubview(captureImageView)

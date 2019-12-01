@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671E2F18239471A200449401 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E820345238F73DD00B1FED7 /* Extension.swift */; };
+		671E2F19239471A200449401 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E820345238F73DD00B1FED7 /* Extension.swift */; };
 		67589BB8237EAA420087318A /* ColorAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BB7237EAA420087318A /* ColorAssistantUITests.swift */; };
 		67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */; };
 		67589BDB237EAA9F0087318A /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
@@ -285,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67589BB8237EAA420087318A /* ColorAssistantUITests.swift in Sources */,
+				671E2F19239471A200449401 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671E2F18239471A200449401 /* Extension.swift in Sources */,
 				67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */,
 				67589BDB237EAA9F0087318A /* FirstView.swift in Sources */,
 			);

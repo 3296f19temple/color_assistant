@@ -15,6 +15,10 @@
 		67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */; };
 		67589BDB237EAA9F0087318A /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
 		67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */; };
+		67786D56238F30F8009EA7B0 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D55238F30F8009EA7B0 /* AppDatabase.swift */; };
+		67786D58238F3101009EA7B0 /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D57238F3101009EA7B0 /* Wardrobe.swift */; };
+		67786D5B238F347D009EA7B0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D5A238F347D009EA7B0 /* Files */; };
+		67786D5E238F3616009EA7B0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 67786D5D238F3616009EA7B0 /* GRDB */; };
 		678AE1C1237E08B100F9151C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678AE1C0237E08B100F9151C /* Example.swift */; };
 		6E01124A2388677F00DF210B /* OutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0112492388677F00DF210B /* OutputVC.swift */; };
 		6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */; };
@@ -52,6 +56,8 @@
 		67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssistantTests.swift; sourceTree = "<group>"; };
 		67589BD5237EAA7B0087318A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatabilityCheck.swift; sourceTree = "<group>"; };
+		67786D55238F30F8009EA7B0 /* AppDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		67786D57238F3101009EA7B0 /* Wardrobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
 		678AE1C0237E08B100F9151C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		6E0112492388677F00DF210B /* OutputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputVC.swift; sourceTree = "<group>"; };
 		6ED015D92379FAB2004B9DD7 /* ColorAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,10 +140,10 @@
 			children = (
 				6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */,
 				6746A5672393944D00315502 /* AppDatabase.swift */,
-				6746A565239391FF00315502 /* Wardrobe.swift */,
 				678AE1C0237E08B100F9151C /* Example.swift */,
 				6ED0160E2379FCE6004B9DD7 /* FirstView.swift */,
 				6ED01615237F7BEE004B9DD7 /* CameraVC.swift */,
+				67786D57238F3101009EA7B0 /* Wardrobe.swift */,
 				6E0112492388677F00DF210B /* OutputVC.swift */,
 				6ED015E22379FAB4004B9DD7 /* Assets.xcassets */,
 				6ED015E72379FAB4004B9DD7 /* LaunchScreen.storyboard */,
@@ -317,9 +323,11 @@
 				6746A5682393944D00315502 /* AppDatabase.swift in Sources */,
 				6746A566239391FF00315502 /* Wardrobe.swift in Sources */,
 				6E01124A2388677F00DF210B /* OutputVC.swift in Sources */,
+				67786D56238F30F8009EA7B0 /* AppDatabase.swift in Sources */,
 				6ED01616237F7BEE004B9DD7 /* CameraVC.swift in Sources */,
 				6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */,
 				6ED0160F2379FCE6004B9DD7 /* FirstView.swift in Sources */,
+				67786D58238F3101009EA7B0 /* Wardrobe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +473,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -526,6 +535,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
-        "package": "DeviceInfo",
-        "repositoryURL": "https://github.com/interestingibis/DeviceInfo.git",
+        "package": "Files",
+        "repositoryURL": "git@github.com:JohnSundell/Files.git",
         "state": {
-          "branch": "master",
-          "revision": "726f388fea972b55e0bd8673f678c5c0257f98ca",
-          "version": null
+          "branch": null,
+          "revision": "6568bfe636f02dfd85dc9d51b3782555b83080d3",
+          "version": "4.0.2"
+        }
+      },
+      {
+        "package": "GRDB",
+        "repositoryURL": "git@github.com:groue/GRDB.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "a67070dd9a08dad455e9f2895a0c40921d31fa1c",
+          "version": "4.6.2"
         }
       }
     ]

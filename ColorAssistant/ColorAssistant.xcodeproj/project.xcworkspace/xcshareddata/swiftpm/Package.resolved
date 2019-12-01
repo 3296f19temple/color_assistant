@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Files",
-        "repositoryURL": "git@github.com:JohnSundell/Files.git",
+        "repositoryURL": "https://github.com/JohnSundell/Files",
         "state": {
           "branch": null,
           "revision": "6568bfe636f02dfd85dc9d51b3782555b83080d3",

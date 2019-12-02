@@ -18,6 +18,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession = AVCaptureSession()
     var stillImageOutput = AVCapturePhotoOutput()
     var videoPreviewLayer = AVCaptureVideoPreviewLayer()
+    let crosshair = UIImageView()
     
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
 		captureSession.sessionPreset = .high//CompatabilityCheck().resolutionCompatability()
         previewViewSetup()
         takePhotoButtonSetup()
+        crosshairSetup()
         
 		guard let backCamera = AVCaptureDevice.default(for: .video) else {
             print("Unable to access back Camera")
@@ -61,6 +63,16 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    func crosshairSetup(){
+        view.addSubview(crosshair)
+        crosshair.translatesAutoresizingMaskIntoConstraints = false
+        crosshair.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        crosshair.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        crosshair.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        crosshair.image = #imageLiteral(resourceName: "crosshair")
     }
     
     func setupLivePreview() {
@@ -106,8 +118,8 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         
         let image = UIImage(data: imageData)
-        let vc = FirstView()
-        vc.outputImage = image!
+        let vc = OutputVC()
+		vc.outputImage = (image?.rotate(radians: .pi*2)!)!
 		vc.img = image!
 		if #available(iOS 13, *) {
 			
@@ -117,7 +129,8 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
 		}
         present(vc, animated: true, completion: nil)
         captureImageViewSetup()
-        vc.cardView.backgroundColor = image?.getCenterColor()
+        vc.outputImage = image!
+        //vc.cardView.backgroundColor = image?.getCenterColor()
         //captureImageView.image = image
         
     }

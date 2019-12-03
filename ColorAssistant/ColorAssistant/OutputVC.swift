@@ -111,7 +111,7 @@ class OutputVC: UIViewController {
         //colorNameLabel.leadingAnchor.constraint(equalTo: colorLabel.leadingAnchor).isActive = true
         colorNameLabel.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: 2).isActive = true
         colorNameLabel.text = "Color Name"
-        colorNameLabel.font = UIFont.systemFont(ofSize: 25)
+        colorNameLabel.font = UIFont.systemFont(ofSize: 20)
         colorNameLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
     }
     
@@ -124,8 +124,8 @@ class OutputVC: UIViewController {
         colorView.heightAnchor.constraint(equalTo: colorView.widthAnchor, multiplier: 1) .isActive = true
         colorView.layer.cornerRadius = colorView.bounds.width
         colorView.layer.masksToBounds = true
-        let centX = (outputImage.size.width/2) - 10
-        let centY = (outputImage.size.height/2) - 10
+        let centX = (outputImage.size.width/2) - 15
+        let centY = (outputImage.size.height/2) - 15
         let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         colorView.backgroundColor = centerColor
     }
@@ -159,7 +159,7 @@ class OutputVC: UIViewController {
         colorLabel.centerYAnchor.constraint(equalTo: copyButton.centerYAnchor).isActive = true
         colorLabel.text = "nil"
         colorLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
-        colorLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        colorLabel.font = UIFont.boldSystemFont(ofSize: 25)
     }
     
     func colorWheelEnvelopSetup() {
@@ -238,6 +238,7 @@ class OutputVC: UIViewController {
             //self.view.backgroundColor = centerColor
             self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
             self.colorLabel.text = centerColor!.hexString
+            self.colorNameLabel.text = centerColor?.name(r: r*255, g: g*255, b: b*255)
         }
     }
     

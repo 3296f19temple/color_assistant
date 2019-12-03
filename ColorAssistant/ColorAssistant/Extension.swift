@@ -12,7 +12,7 @@ import UIKit
 extension UIImage {
     func averageColor(xCoord: Int, yCoord : Int) -> UIColor?{//returns average color within 30X30 square
         guard let inputImage = CIImage(image: self) else { return nil }
-        let extentVector = CIVector(x: CGFloat(xCoord), y: CGFloat(yCoord), z: 20, w: 20)
+        let extentVector = CIVector(x: CGFloat(xCoord), y: CGFloat(yCoord), z: 30, w: 30)
 
         guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
         guard let outputImage = filter.outputImage else { return nil }
@@ -65,6 +65,7 @@ extension UIImage {
         return newImage
     }
 }
+    
 extension UIColor {
     var hexString: String {
         let colorRef = cgColor.components
@@ -86,4 +87,47 @@ extension UIColor {
 
         return color
     }
+    func name(r: Int, g: Int, b: Int) -> String {
+            
+            if(((r-200)*-1) < ((r-100)*-1)){
+                r = 2 //two represents 255
+            }else if(r > 100){
+                r = 1 //1 represents 150
+            }else{
+                r = 0 //0 represents 0
+            }
+            if(((g-200)*-1) < ((g-100)*-1)){
+                g = 2 //two represents 255
+            }else if(g > 100){
+                g = 1 //1 represents 150
+            }else{
+                g = 0 //0 represents 0
+            }
+            if(((b-200)*-1) < ((b-100)*-1)){
+                b = 2 //two represents 255
+            }else if(b > 100){
+                b = 1 //1 represents 150
+            }else{
+                b = 0 //0 represents 0
+            }
+            
+            if(r == 2 & b == 2 & g == 2){
+                return "black"
+            }else if(r == 2 & g == 2 & b == 1){
+                    return "yellow"
+            }else if(r == 2 & g == 2 & b == 0){
+                return "orange"
+            }else if(r == 2 & g == 1 & b == 2){
+                    return "purple"
+            }else if(r == 2 & g == 0 & b == 2){
+                return "pink"
+            }else if(r == 2 & (g == 1 || g == 0)  & (b == 1 || b == 0)){
+                return "red"
+            }else if(r == 1 & g == 2 & b == 2){
+                    return "teal"
+            }else if((r == 1 || r == 0) & (g==1 || g == 0 || g == 2) & b == 2){
+                return "blue"
+            }
+            return "i dont know"
+        }
 }

@@ -87,43 +87,43 @@ extension UIColor {
 
         return color
     }
-    func name(red: Int, green: Int, blue: Int) -> String {
+    func name(red: CGFloat, green: CGFloat, blue: CGFloat) -> String {
            
-        var r = red
-        var g = green
-        var b = blue
+        var r = 0
+        var g = 0
+        var b = 0
 
-        if(((r-200) * -1) < ((r-100) * -1)){
+        if(((red-200) > 0)){
                 r = 2 //two represents 255
-            }else if(r > 100){
+            }else if(red > 100){
                 r = 1 //1 represents 150
             }else{
                 r = 0 //0 represents 0
             }
-        if(((g-200) * -1) < ((g-100) * -1)){
+        if(((green-200) > 0)){
                 g = 2 //two represents 255
-            }else if(g > 100){
+            }else if(green > 100){
                 g = 1 //1 represents 150
             }else{
                 g = 0 //0 represents 0
             }
-        if(((b-200) * -1) < ((b-100) * -1)){
+        if(((blue-200) > 0)){
                 b = 2 //two represents 255
-            }else if(b > 100){
+            }else if(blue > 100){
                 b = 1 //1 represents 150
             }else{
                 b = 0 //0 represents 0
             }
             
-            if(r == 2 && b == 2 && g == 2){
-                return "black"
+            if(r == 2 && g == 2 && g == 2){
+                return "white"
             }else if(r == 2 && g == 2 && b == 1){
                     return "yellow"
             }else if(r == 2 && g == 2 && b == 0){
                 return "orange"
             }else if(r == 2 && g == 1 && b == 2){
                     return "purple"
-            }else if(r == 2 && g == 0 && b == 2){
+            }else if(r == 2 && g == 1 && b == 1){
                 return "pink"
             }else if(r == 2 && (g == 1 || g == 0)  && (b == 1 || b == 0)){
                 return "red"

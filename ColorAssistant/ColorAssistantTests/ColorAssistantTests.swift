@@ -61,5 +61,12 @@ func greenTest(){//Colors should return the name green
     }
 	
 }
+func yellowTest(){
+	let yellows : [UIColor] = [#colorLiteral(red: 0.922, green: 0.8, blue: 0.353, alpha: 1.0),#colorLiteral(red: 0.933, green: 0.816, blue: 0.369, alpha: 1.0),#colorLiteral(red: 0.933, green: 0.816, blue: 0.365, alpha: 1.0),#colorLiteral(red: 255/255, green: 217/255, blue: 0/255, alpha: 1),#colorLiteral(red: 255/255, green: 221/255, blue: 0/255, alpha: (1))]
+	for color in yellows{
+		XCTAssert(color.name() == "Yellow","NOT YELLOW \(color.name())")
+    }
+
+}
 
 }

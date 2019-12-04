@@ -309,7 +309,7 @@ class OutputVC: UIViewController {
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
                 ctx.lineWidth = '3';
                 ctx.beginPath();
-                ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+                ctx.arc(x, y, 30, 0, Math.PI * 2, true);
                 ctx.closePath();
                 ctx.fill();
                 ctx.stroke();

@@ -238,7 +238,7 @@ class OutputVC: UIViewController {
             //self.view.backgroundColor = centerColor
             self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
             self.colorLabel.text = centerColor!.hexString
-            self.colorNameLabel.text = centerColor!.name(red: r*255, green: g*255, blue: b*255)
+            self.colorNameLabel.text = centerColor!.name(red: Int(r * 255), green: Int(g * 255), blue: Int(b * 255))
         }
     }
     

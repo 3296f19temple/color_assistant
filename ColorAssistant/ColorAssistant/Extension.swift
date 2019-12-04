@@ -87,7 +87,11 @@ extension UIColor {
 
         return color
     }
-    func name(red: CGFloat, green: CGFloat, blue: CGFloat) -> String {
+    func name() -> String {
+        let comp = self.cgColor.components //get the RGB Values
+        let red  =  CGFloat(comp![0])*255
+        let green = CGFloat(comp![1])*255
+        let blue = CGFloat(comp![2])*255
            
         var r = 0
         var g = 0

@@ -57,14 +57,14 @@ class ColorAssistantTests: XCTestCase {
 func greenTest(){//Colors should return the name green
 	let greens = [ #colorLiteral(red: 0.3411764705882353, green: 0.6235294117647059, blue: 0.16862745098039217, alpha: 1.0) , #colorLiteral(red: 0.286, green: 0.529, blue: 0.341, alpha: 1.0) , #colorLiteral(red: 0.373, green: 0.561, blue: 0.318, alpha: 1.0)]
     for color in greens{
-		XCTAssert(color.name() == "Green", "color name for \(color.cgColor.components![0]*255) \(color.cgColor.components![1]*255) \(color.cgColor.components![2]*255) : \(color.name() NOT Green")
+		XCTAssert(color.name() == "Green", "color name for \(color.cgColor.components![0]*255) \(color.cgColor.components![1]*255) \(color.cgColor.components![2]*255) : \(color.name()) NOT Green")
     }
 	
 }
 func yellowTest(){
 	let yellows : [UIColor] = [#colorLiteral(red: 0.922, green: 0.8, blue: 0.353, alpha: 1.0),#colorLiteral(red: 0.933, green: 0.816, blue: 0.369, alpha: 1.0),#colorLiteral(red: 0.933, green: 0.816, blue: 0.365, alpha: 1.0),#colorLiteral(red: 255/255, green: 217/255, blue: 0/255, alpha: 1),#colorLiteral(red: 255/255, green: 221/255, blue: 0/255, alpha: (1))]
 	for color in yellows{
-		XCTAssert(color.name() == "Yellow", "color name for \(color.cgColor.components![0]*255) \(color.cgColor.components![1]*255) \(color.cgColor.components![2]*255) : \(color.name() NOT Yellow")
+		XCTAssert(color.name() == "Yellow", "color name for \(color.cgColor.components![0]*255) \(color.cgColor.components![1]*255) \(color.cgColor.components![2]*255) : \(color.name()) NOT Yellow")
     }
 
 }

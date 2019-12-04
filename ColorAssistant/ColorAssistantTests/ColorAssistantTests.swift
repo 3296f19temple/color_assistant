@@ -52,4 +52,14 @@ class ColorAssistantTests: XCTestCase {
         }
     }
 
+
+/*COLOR NAMING TESTS*/
+func greenTest(){//Colors should return the name green
+	let greens = [ #colorLiteral(red: 0.3411764705882353, green: 0.6235294117647059, blue: 0.16862745098039217, alpha: 1.0) , #colorLiteral(red: 0.286, green: 0.529, blue: 0.341, alpha: 1.0) , #colorLiteral(red: 0.373, green: 0.561, blue: 0.318, alpha: 1.0)]
+    for color in greens{
+		XCTAssert(color.name() == "Green","NOT GREEN \(color.name())")
+    }
+	
+}
+
 }

@@ -87,23 +87,27 @@ extension UIColor {
 
         return color
     }
-    func name(r: Int, g: Int, b: Int) -> String {
-            
-            if(((r-200)*-1) < ((r-100)*-1)){
+    func name(red: Int, green: Int, blue: Int) -> String {
+           
+        var r = red
+        var g = green
+        var b = blue
+
+        if(((r-200) * -1) < ((r-100) * -1)){
                 r = 2 //two represents 255
             }else if(r > 100){
                 r = 1 //1 represents 150
             }else{
                 r = 0 //0 represents 0
             }
-            if(((g-200)*-1) < ((g-100)*-1)){
+        if(((g-200) * -1) < ((g-100) * -1)){
                 g = 2 //two represents 255
             }else if(g > 100){
                 g = 1 //1 represents 150
             }else{
                 g = 0 //0 represents 0
             }
-            if(((b-200)*-1) < ((b-100)*-1)){
+        if(((b-200) * -1) < ((b-100) * -1)){
                 b = 2 //two represents 255
             }else if(b > 100){
                 b = 1 //1 represents 150
@@ -111,21 +115,21 @@ extension UIColor {
                 b = 0 //0 represents 0
             }
             
-            if(r == 2 & b == 2 & g == 2){
+            if(r == 2 && b == 2 && g == 2){
                 return "black"
-            }else if(r == 2 & g == 2 & b == 1){
+            }else if(r == 2 && g == 2 && b == 1){
                     return "yellow"
-            }else if(r == 2 & g == 2 & b == 0){
+            }else if(r == 2 && g == 2 && b == 0){
                 return "orange"
-            }else if(r == 2 & g == 1 & b == 2){
+            }else if(r == 2 && g == 1 && b == 2){
                     return "purple"
-            }else if(r == 2 & g == 0 & b == 2){
+            }else if(r == 2 && g == 0 && b == 2){
                 return "pink"
-            }else if(r == 2 & (g == 1 || g == 0)  & (b == 1 || b == 0)){
+            }else if(r == 2 && (g == 1 || g == 0)  && (b == 1 || b == 0)){
                 return "red"
-            }else if(r == 1 & g == 2 & b == 2){
+            }else if(r == 1 && g == 2 && b == 2){
                     return "teal"
-            }else if((r == 1 || r == 0) & (g==1 || g == 0 || g == 2) & b == 2){
+            }else if((r == 1 || r == 0) && (g == 1 || g == 0 || g == 2) && b == 2){
                 return "blue"
             }
             return "i dont know"

@@ -5,7 +5,8 @@
 //  Created by Ian Applebaum on 11/26/19.
 //  Copyright © 2019 Likhon Gomes. All rights reserved.
 //
-
+ 
+/*
 import Foundation
 import DeviceInfo
 import AVFoundation
@@ -51,4 +52,5 @@ class CompatabilityCheck {
 	}
 	
 }
+ */
 

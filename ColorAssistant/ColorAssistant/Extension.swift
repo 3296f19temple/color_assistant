@@ -93,45 +93,117 @@ extension UIColor {
         var g = 0
         var b = 0
 
-        if(((red-200) > 0)){
-                r = 2 //two represents 255
+        if(((red-225) > 0)){
+                r = 9
+            }else if(red > 200){
+                r = 8
+            }else if(red > 175){
+                r = 7
+            }else if(red > 150){
+                r = 6
+            }else if(red > 125){
+                r = 5
             }else if(red > 100){
-                r = 1 //1 represents 150
+                r = 4
+            }else if(red > 75){
+                r = 3
+            }else if(red > 50){
+                r = 2
+            }else if(red > 25){
+                r = 1
             }else{
-                r = 0 //0 represents 0
+                r = 0
             }
-        if(((green-200) > 0)){
-                g = 2 //two represents 255
+        
+        if(((green-225) > 0)){
+                g = 9
+            }else if(green > 200){
+                g = 8
+            }else if(green > 175){
+                g = 7
+            }else if(green > 150){
+                g = 6
+            }else if(green > 125){
+                g = 5
             }else if(green > 100){
-                g = 1 //1 represents 150
+                g = 4
+            }else if(green > 75){
+                g = 3
+            }else if(green > 50){
+                g = 2
+            }else if(green > 25){
+                g = 1
             }else{
-                g = 0 //0 represents 0
+                g = 0
             }
-        if(((blue-200) > 0)){
-                b = 2 //two represents 255
+        
+        if(((blue-225) > 0)){
+                b = 9
+            }else if(blue > 200){
+                b = 8
+            }else if(blue > 175){
+                b = 7
+            }else if(blue > 150){
+                b = 6
+            }else if(blue > 125){
+                b = 5
             }else if(blue > 100){
-                b = 1 //1 represents 150
+                b = 4
+            }else if(blue > 75){
+                b = 3
+            }else if(blue > 50){
+                b = 2
+            }else if(blue > 25){
+                b = 1
             }else{
-                b = 0 //0 represents 0
+                b = 0
             }
             
-            if(r == 2 && g == 2 && g == 2){
-                return "white"
-            }else if(r == 2 && g == 2 && b == 1){
-                    return "yellow"
-            }else if(r == 2 && g == 2 && b == 0){
-                return "orange"
-            }else if(r == 2 && g == 1 && b == 2){
-                    return "purple"
-            }else if(r == 2 && g == 1 && b == 1){
-                return "pink"
-            }else if(r == 2 && (g == 1 || g == 0)  && (b == 1 || b == 0)){
-                return "red"
-            }else if(r == 1 && g == 2 && b == 2){
-                    return "teal"
-            }else if((r == 1 || r == 0) && (g == 1 || g == 0 || g == 2) && b == 2){
-                return "blue"
-            }
-            return "i dont know"
-        }
-}
+		
+			if((r == 4 || r == 5 || r == 6 || r == 7 || r == 8 || r == 9) && (g == 0 || g == 1 || g == 2 || g == 3)  && (b == 0 || b == 1 || b == 2 || b == 3)){
+				return "Red"
+			}else if((r == 0 || r == 1 || r == 2) && (g == 0 || g == 1 || g == 2 || g == 3 || g == 4 || g == 5) && (b == 4 || b == 5 || b == 6 || b == 7 || b == 8 || b == 9)){
+				return "Blue"
+			}else if((r == 0 || r == 1 || r == 2 || r == 3) && (g == 5 || g == 6 || g == 7 || g == 8 || g == 9) && (b == 0 || b == 1 || b == 2 || b == 3)){
+				return "Green"
+			}else{
+				 if((r == 8 || r == 9) && (g == 4 || g == 5 || g == 6) && (b == 0 || b == 1 || b == 2 || b == 3)){
+						return "Orange"
+					}else if((r == 4 || r == 5 || r == 6) && (g == 0 || g == 1 || g == 2 || g == 3) && (b == 6 || b == 7 || b == 8 || b == 9)){
+						return "purple"
+					}else if((r == 9) && (g == 0 || g == 1 || g == 2 || g == 3) && (b == 9)){
+						return "Pink"
+					}else if((r == 0 || r == 1 || r == 2 || r == 3)  && (g == 8 || g == 9) && (b == 8 || b == 2)){
+						return "Teal"
+					}else if((r == 8 || r == 9) && (g == 8 || g == 9) && (b == 0 || b == 1 || b == 2 || b == 3)){
+						return "Yellow"
+				}else{
+						return "Try Again"
+				}
+			}
+		}
+	}
+		
+		
+		//if(r == 4 && g == 4 && g == 4){
+               // return "White"
+//            }else if((r == 4 || r == 5 || r == 6 || r == 7 || r == 8 || r == 9) && (g == 0 || g == 1 || g == 2 || g == 3)  && (b == 0 || b == 1 || b == 2 || b == 3)){
+//                return "Red"
+//            }else if((r == 0 || r == 1 || r == 2) && (g == 0 || g == 1 || g == 2 || g == 3) && (b == 4 || b == 5 || b == 6 || b == 7 || b == 8 || b == 9)){
+//                return "Blue"
+//            }else if((r == 0 || r == 1 || r == 2 || r == 3) && (g == 5 || g == 6 || g == 7 || g == 8 || g == 9) && (b == 0 || b == 1 || b == 2 || b == 3)){
+//                return "Green"
+//            }else if((r == 9 || r == 9) && (g == 4 || g == 5 || g == 6) && (b == 0 || b == 1 || b == 2 || b == 3)){
+//                return "Orange"
+//            }else if((r == 4 || r == 5 || r == 6) && (g == 0 || g == 1 || g == 2 || g == 3) && (b == 8 || b == 9)){
+//                    return "purple"
+//            }else if((r == 9) && (g == 0 || g == 1 || g == 2 || g == 3) && (b == 9)){
+//                return "Pink"
+//            }else if((r == 0 || r == 1 || r == 2 || r == 3)  && (g == 8 || g == 9) && (b == 8 || b == 2)){
+//                    return "Teal"
+//            }else if( r == 9 && g == 9 && (b == 0 || b == 1 || b == 2 || b == 3)){
+//                    return "Yellow"
+//            }
+//            return "Try Again"
+//        }
+

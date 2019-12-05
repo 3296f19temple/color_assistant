@@ -257,8 +257,10 @@ class OutputVC: UIViewController {
         }
     }
     fileprivate func colorWheel(_ image: UIImage, point: CGPoint) {
-        let centX = point.x
-        let centY = point.y
+        //print("before",point.x,point.y)
+        let centX = image.size.width-point.x
+        let centY = image.size.height-point.y
+        //print("after",point.x,point.y)
         let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         let breakColorComp = centerColor!.cgColor.components //need to break into array
         let r = breakColorComp![0]//red

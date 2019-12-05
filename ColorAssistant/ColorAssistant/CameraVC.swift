@@ -77,7 +77,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     
     func setupLivePreview() {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.videoGravity = .resize
+        videoPreviewLayer.videoGravity = .resizeAspectFill
         previewView.layer.addSublayer(videoPreviewLayer)
     }
     

@@ -244,7 +244,7 @@ class OutputVC: UIViewController {
     
     func wheelSetValue(r:CGFloat,g:CGFloat,b:CGFloat) -> String {
         let HTML = """
-        <div class="color-space"></div>
+        <div class="outer"><div class="overlay"></div><div class="color-space"></div></div><style>.overlay { height: 100%; width: 100%; position: absolute;}</style>
         <script>function ColorPicker(element) {
             this.element = element;
 

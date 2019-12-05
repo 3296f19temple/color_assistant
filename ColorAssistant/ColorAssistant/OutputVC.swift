@@ -24,14 +24,18 @@ class OutputVC: UIViewController {
     let colorNameLabel = UILabel()
     let colorDetails = UIView()
     let saveButton = UIButton()
-    
+    var pointFromColorPicker:CGPoint? = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //captureImageViewSetup()
         cardViewSetup()
         colorWheelEnvelopSetup()
-        colorWheel(outputImage)
+        if pointFromColorPicker != nil {
+            colorWheel(outputImage, point: pointFromColorPicker!)//from image view picker
+        }else{
+            colorWheel(outputImage)//from camera vc
+        }
         colorViewSetup()
         colorDetailsSetup()
         copyButtonSetup()
@@ -115,6 +119,20 @@ class OutputVC: UIViewController {
         colorNameLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
     }
     
+    fileprivate func setColorValueForView() {
+        if pointFromColorPicker != nil {
+            let centX = pointFromColorPicker!.x
+            let centY = pointFromColorPicker!.y
+            let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+            colorView.backgroundColor = centerColor
+        }else{
+        let centX = (outputImage.size.width/2) - 10
+        let centY = (outputImage.size.height/2) - 10
+        let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+        colorView.backgroundColor = centerColor
+        }
+    }
+    
     func colorViewSetup() {
         cardView.addSubview(colorView)
         colorView.translatesAutoresizingMaskIntoConstraints = false
@@ -124,10 +142,7 @@ class OutputVC: UIViewController {
         colorView.heightAnchor.constraint(equalTo: colorView.widthAnchor, multiplier: 1) .isActive = true
         colorView.layer.cornerRadius = colorView.bounds.width
         colorView.layer.masksToBounds = true
-        let centX = (outputImage.size.width/2) - 10
-        let centY = (outputImage.size.height/2) - 10
-        let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
-        colorView.backgroundColor = centerColor
+        setColorValueForView()
     }
     
     func copyButtonSetup() {
@@ -229,6 +244,20 @@ class OutputVC: UIViewController {
     fileprivate func colorWheel(_ image: UIImage) {
         let centX = image.size.width/2 - 10
         let centY = image.size.height/2 - 10
+        let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
+        let breakColorComp = centerColor!.cgColor.components //need to break into array
+        let r = breakColorComp![0]//red
+        let g = breakColorComp![1]//green
+        let b = breakColorComp![2]//blue
+        DispatchQueue.main.async {
+            //self.view.backgroundColor = centerColor
+            self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
+            self.colorLabel.text = centerColor!.hexString
+        }
+    }
+    fileprivate func colorWheel(_ image: UIImage, point: CGPoint) {
+        let centX = point.x
+        let centY = point.y
         let centerColor = image.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         let breakColorComp = centerColor!.cgColor.components //need to break into array
         let r = breakColorComp![0]//red
@@ -382,5 +411,5 @@ class OutputVC: UIViewController {
         """
         return HTML
     }
-    
+
 }

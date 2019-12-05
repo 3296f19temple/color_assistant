@@ -83,15 +83,12 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePickerCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else {
-            // dismiss(animated: true)
             return
         }
-        // Convert image into PFFile data type
-        // self.imageArea.image = image
-        //newImage = image
         print("done picking")
         let vc = ColorPickerVC()
         self.present(vc, animated: true, completion: nil)
+        vc.image = image
         dismiss(animated: true) {
             self.present(vc, animated: true, completion: nil)
         }

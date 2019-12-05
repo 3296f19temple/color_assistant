@@ -183,7 +183,7 @@ extension UIColor {
 					}else if((r == 8 || r == 9) && (g == 8 || g == 9) && (b == 0 || b == 1 || b == 2 || b == 3)){
 						return "Yellow"
 				}else{
-						return "Try Again"
+						return ""
 				}
 			}
 		}

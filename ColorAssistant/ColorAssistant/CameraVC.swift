@@ -88,7 +88,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         previewView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         previewView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         previewView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        previewView.backgroundColor = .blue
+        previewView.backgroundColor = .black
     }
     
     func takePhotoButtonSetup() {

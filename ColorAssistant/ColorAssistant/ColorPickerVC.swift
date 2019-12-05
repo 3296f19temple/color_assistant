@@ -43,6 +43,12 @@ class ColorPickerVC: UIViewController {
         let location = sender.location(in: imageView)
         print(location.x, location.y)
         crosshair.center = location
+        
+        
+        let vc = OutputVC()
+        vc.pointFromColorPicker = location
+        vc.outputImage = UIImage(named: "sampleImage")!
+        self.present(vc, animated: true, completion: nil)
     }
     
     
@@ -57,10 +63,6 @@ class ColorPickerVC: UIViewController {
         imageView.image = UIImage(named: "sampleImage")
         imageView.isUserInteractionEnabled = true
     }
-    
-    
-    
-
     
 
 }

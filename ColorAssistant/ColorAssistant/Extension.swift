@@ -64,6 +64,32 @@ extension UIImage {
         
         return newImage
     }
+    
+}
+extension UIImageView{
+    func mapPointThroughAspectFill(uiViewPoint:CGPoint)->CGPoint
+    // Maps a point from the coordinate space of our UIView into the space of the image
+    // which AspectFills that UIView
+    {
+        let imageWidth = self.image!.size.width
+        let imageHeight = self.image!.size.height
+        let xScale = self.bounds.size.width / imageWidth
+        let yScale = self.bounds.size.height / imageHeight
+        var x, y,  o:CGFloat
+
+        if (xScale>yScale) {
+            // scale vertically from the center for height-pegged images
+            o = (self.bounds.size.height - (imageHeight*xScale))/2;
+            x = uiViewPoint.x / xScale;
+            y = (uiViewPoint.y-o) / xScale;
+        } else {
+            // scale horizontally from the center for width-pegged images
+            o = (self.bounds.size.width - (imageWidth*yScale))/2;
+            x = (uiViewPoint.x-o) / yScale;
+            y = uiViewPoint.y / yScale;
+        }
+        return CGPoint(x: x, y: y)
+    }
 }
 extension UIColor {
     var hexString: String {

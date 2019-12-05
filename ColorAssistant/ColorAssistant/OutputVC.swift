@@ -126,6 +126,7 @@ class OutputVC: UIViewController {
             let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
             colorView.backgroundColor = centerColor
         }else{
+            outputImage = outputImage.rotate(radians: 2 * .pi)!
         let centX = (outputImage.size.width/2) - 10
         let centY = (outputImage.size.height/2) - 10
         let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
+class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var previewView = UIView()
     var captureImageView = UIImageView()
@@ -19,6 +19,8 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     var stillImageOutput = AVCapturePhotoOutput()
     var videoPreviewLayer = AVCaptureVideoPreviewLayer()
     let crosshair = UIImageView()
+    let colorPickerButton = UIButton()
+    let imagePicker = UIImagePickerController()
     
     
     override func viewDidLoad() {
@@ -28,7 +30,8 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         previewViewSetup()
         takePhotoButtonSetup()
         crosshairSetup()
-        
+        colorPickerButtonSetup()
+        imagePicker.delegate = self
 		guard let backCamera = AVCaptureDevice.default(for: .video) else {
             print("Unable to access back Camera")
             return
@@ -58,6 +61,40 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
             self.videoPreviewLayer.frame = self.previewView.bounds
         }
         
+    }
+    
+    func colorPickerButtonSetup(){
+        view.addSubview(colorPickerButton)
+        colorPickerButton.translatesAutoresizingMaskIntoConstraints = false
+        colorPickerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        colorPickerButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        colorPickerButton.leadingAnchor.constraint(equalTo: takePhotoButton.trailingAnchor, constant: 40).isActive = true
+        colorPickerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+        colorPickerButton.setImage(UIImage(named: "colorPicker"), for: .normal)
+        colorPickerButton.addTarget(self, action: #selector(colorPickerButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func colorPickerButtonClicked() {
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: { () in print("Done🔨") })
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            // dismiss(animated: true)
+            return
+        }
+        // Convert image into PFFile data type
+        // self.imageArea.image = image
+        //newImage = image
+        print("done picking")
+        let vc = ColorPickerVC()
+        self.present(vc, animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

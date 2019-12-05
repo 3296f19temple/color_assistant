@@ -40,14 +40,19 @@ class ColorPickerVC: UIViewController {
 
     
     @objc func gestureRecognizerTapped(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: imageView)
+        let vc = OutputVC()
+        vc.outputImage = #imageLiteral(resourceName: "sampleImage3")//getImage()
+       
+        var location = sender.location(in: imageView)
+        
+        
         print(location.x, location.y)
         crosshair.center = location
+       
+        let newLocation = imageView.mapPointThroughAspectFill(uiViewPoint: location)
         
         
-        let vc = OutputVC()
-        vc.pointFromColorPicker = location
-        vc.outputImage = UIImage(named: "sampleImage")!
+        vc.pointFromColorPicker = newLocation
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -60,9 +65,17 @@ class ColorPickerVC: UIViewController {
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        imageView.image = UIImage(named: "sampleImage")
+        imageView.image = UIImage(named: "sampleImage3")
         imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFit
     }
-    
+    func getImage() -> UIImage {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        //stackViewGlobal.isHidden = false//
+        return image!
+    }
 
 }

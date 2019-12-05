@@ -11,28 +11,41 @@ import UIKit
 class ColorPickerVC: UIViewController {
     
     let imageView = UIImageView()
-    var tapGestureRecognizer = UITapGestureRecognizer()
+    let crosshair = UIImageView()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageViewSetup()
+        crosshairSetup()
         
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tap:"))
-        tap.numberOfTapsRequired = 1
-
-        view.addGestureRecognizer(tap)
- 
+        imageView.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gestureRecognizerTapped(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
     }
     
-    func tap(sender:UITapGestureRecognizer){
-
-        if sender.state == .ended {
-
-            var touchLocation: CGPoint = sender.location(in: sender.view)
-            print(touchLocation.x, touchLocation.y)
-            //touchLocation = self.convertPointFromView(touchLocation)
-
-        }
+    func crosshairSetup(){
+        view.addSubview(crosshair)
+        crosshair.translatesAutoresizingMaskIntoConstraints = false
+        crosshair.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        crosshair.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        crosshair.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        crosshair.image = #imageLiteral(resourceName: "crosshair")
     }
+
+    
+    @objc func gestureRecognizerTapped(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: imageView)
+        print(location.x, location.y)
+        crosshair.center = location
+    }
+    
+    
     
     func imageViewSetup() {
         view.addSubview(imageView)
@@ -43,13 +56,9 @@ class ColorPickerVC: UIViewController {
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         imageView.image = UIImage(named: "sampleImage")
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc func tapGestureRecognizerTapped() {
-        print("hello")
-        //print(sender.location(in: imageView).x)
-    }
+    
     
 
     

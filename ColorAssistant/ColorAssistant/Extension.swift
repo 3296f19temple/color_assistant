@@ -170,9 +170,17 @@ extension UIColor {
                 return "black"
             }
 			if((r == 4 || r == 5 || r == 6 || r == 7 || r == 8 || r == 9) && (g == 0 || g == 1 || g == 2 || g == 3)  && (b == 0 || b == 1 || b == 2 || b == 3)){
-				return "Red"
-			}else if((r == 0 || r == 1 || r == 2) && (g == 0 || g == 1 || g == 2 || g == 3 || g == 4 || g == 5) && (b == 4 || b == 5 || b == 6 || b == 7 || b == 8 || b == 9)){
-				return "Blue"
+				if((r == 8 || r == 9) && (g == 3 || g == 4 || g == 5 || g == 6) && (b == 0 || b == 1 || b == 2 || b == 3)){
+					return "Orange"
+				}else{
+					return "Red"
+				}
+			}else if((r == 0 || r == 1 || r == 2) && (g == 0 || g == 1 || g == 2 || g == 3 || g == 4 || g == 5) && (b == 3 || b == 4 || b == 5 || b == 6 || b == 7 || b == 8 || b == 9)){
+					if((r == 4 || r == 5 || r == 6) && (g == 0 || g == 1 || g == 2 || g == 3) && (b == 6 || b == 7 || b == 8 || b == 9)){
+						return "purple"
+					}else{
+						return "Blue"
+				}
 			}else if((r == 0 || r == 1 || r == 2 || r == 3) && (g == 5 || g == 6 || g == 7 || g == 8 || g == 9) && (b == 0 || b == 1 || b == 2 || b == 3)){
 				return "Green"
 			}else{
@@ -187,7 +195,7 @@ extension UIColor {
 					}else if((r == 8 || r == 9) && (g == 8 || g == 9) && (b == 0 || b == 1 || b == 2 || b == 3)){
 						return "Yellow"
 				}else{
-						return "Try Again"
+						return " "
 				}
 			}
 		}

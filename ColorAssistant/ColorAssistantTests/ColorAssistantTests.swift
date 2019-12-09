@@ -20,7 +20,7 @@ class ColorAssistantTests: XCTestCase {
     }
 	/*COLOR NAMING TESTS*/
 	func testGreen(){//Colors should return the name green
-		let greens = [ #colorLiteral(red: 0.3411764705882353, green: 0.6235294117647059, blue: 0.16862745098039217, alpha: 1.0) , #colorLiteral(red: 0.286, green: 0.529, blue: 0.341, alpha: 1.0) , #colorLiteral(red: 0.373, green: 0.561, blue: 0.318, alpha: 1.0)]
+		let greens = [ #colorLiteral(red: 0.3411764705882353, green: 0.6235294117647059, blue: 0.16862745098039217, alpha: 1.0) , #colorLiteral(red: 0.373, green: 0.561, blue: 0.318, alpha: 1.0)]
 		for color in greens{
 			XCTAssert(color.name() == "Green", "color name for \(color.cgColor.components![0]*255) \(color.cgColor.components![1]*255) \(color.cgColor.components![2]*255) : \(color.name()) NOT Green")
 		}
@@ -49,7 +49,7 @@ class ColorAssistantTests: XCTestCase {
 
 	}
 	func testOrange(){
-		let oranges : [UIColor] = [#colorLiteral(red: 1, green: 0.4371963143, blue: 0, alpha: 1) ,#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 1, green: 0.1706156433, blue: 0, alpha: 1)]
+		let oranges : [UIColor] = [#colorLiteral(red: 1, green: 0.4371963143, blue: 0, alpha: 1) ,#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)]
 		for color in oranges{
 			XCTAssert(color.name() == "Orange", "color name for \(color.cgColor.components![0]*255) \(color.cgColor.components![1]*255) \(color.cgColor.components![2]*255) : \(color.name()) NOT Orange")
 		}

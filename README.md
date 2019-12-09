@@ -44,7 +44,9 @@ An app that can bring a color dropper to real life situations can be a valuable 
 <h3 align="center">
   <img src="pjimage.jpg" alt="App" />
 </h3>
-
+<h3 align="center">
+  <img src="https://github.com/3296f19temple/project-05-color_assistant/blob/aphotis1-patch-1-1/ColorAssistant/ColorAssistant/Assets.xcassets/AppIcon.appiconset/ca_copy-1024.png" alt="App Icon" />
+</h3>
 ## Implementations
 ### Implemented
 #### Feature Color Identification
@@ -59,5 +61,6 @@ Using Color detection, Wardrobe assistant will allow the user to pair articles o
 https://trello.com/b/ol7xoT56/final-project-color-assistant
 ### Color Blind Research
 https://www.notion.so/colorassistant/TLDR-on-colorblindness-f1a5eba23c574a759d3ed0115f3124ec
-
+### Download our Beta App on Testflight
+https://testflight.apple.com/join/jNoEQu5T
 

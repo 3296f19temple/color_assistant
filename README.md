@@ -47,6 +47,7 @@ An app that can bring a color dropper to real life situations can be a valuable 
 <h3 align="center">
   <img src="https://github.com/3296f19temple/project-05-color_assistant/blob/aphotis1-patch-1-1/ColorAssistant/ColorAssistant/Assets.xcassets/AppIcon.appiconset/ca_copy-1024.png" alt="App Icon" />
 </h3>
+
 ## Implementations
 ### Implemented
 #### Feature Color Identification

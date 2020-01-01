@@ -157,10 +157,7 @@ class OutputVC: UIViewController {
         let centY = (outputImage.size.height/2) - 15
         let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         //let solidColor = UIColor(hex: cent)
-        let solidImage = UIImage(color: centerColor!)
         
-        guard let colorOutput = try? model.prediction(image: buffer(from: solidImage!)!) else {return}
-        print("color output \(colorOutput.classLabel)")
 
         colorView.backgroundColor = centerColor
     }
@@ -273,7 +270,11 @@ class OutputVC: UIViewController {
             //self.view.backgroundColor = centerColor
             self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
             self.colorLabel.text = centerColor!.hexString
-            self.colorNameLabel.text = centerColor!.name(red: r * 255, green: g * 255, blue: b * 255)
+            let solidImage = UIImage(color: centerColor!)
+            
+            guard let colorOutput = try? model.prediction(image: self.buffer(from: solidImage!)!) else {return}
+            print("color output \(colorOutput.classLabel)")
+            self.colorNameLabel.text = colorOutput.classLabel
         }
     }
     

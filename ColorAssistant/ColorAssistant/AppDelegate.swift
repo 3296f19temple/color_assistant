@@ -8,6 +8,8 @@
 
 import UIKit
 
+let model = ColorDetector_3()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

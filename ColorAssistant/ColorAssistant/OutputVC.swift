@@ -25,8 +25,8 @@ class OutputVC: UIViewController {
     let colorNameLabel = UILabel()
     let colorDetails = UIView()
     let saveButton = UIButton()
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //captureImageViewSetup()
@@ -40,11 +40,11 @@ class OutputVC: UIViewController {
         colorNameLabelSetup()
         saveButtonSetup()
         dismissButtonSetup()
-        
+
                 //guard let colorOutput = try? model.prediction(image: <#T##CVPixelBuffer#>)
-        
+
     }
-    
+
     func buffer(from image: UIImage) -> CVPixelBuffer? {
       let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
       var pixelBuffer : CVPixelBuffer?
@@ -69,7 +69,7 @@ class OutputVC: UIViewController {
 
       return pixelBuffer
     }
-    
+
     func saveButtonSetup(){
         cardView.addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
@@ -82,13 +82,13 @@ class OutputVC: UIViewController {
         saveButton.setTitle("Save", for: .normal)
         saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
     }
-    
+
     @objc func saveButtonClicked(){
         saveButton.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
         saveButton.setTitle("Saved", for: .normal)
         UIImageWriteToSavedPhotosAlbum(outputImage, nil, nil, nil);
     }
-    
+
     func colorDetailsSetup() {
         cardView.addSubview(colorDetails)
         colorDetails.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +100,7 @@ class OutputVC: UIViewController {
         let red = UILabel()
         let green = UILabel()
         let blue = UILabel()
-        
+
         let centX = (outputImage.size.width/2) - 10
         let centY = (outputImage.size.height/2) - 10
         let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
@@ -108,31 +108,31 @@ class OutputVC: UIViewController {
         let r = breakColorComp![0]//red
         let g = breakColorComp![1]//green
         let b = breakColorComp![2]//blue
-        
+
         colorDetails.addSubview(red)
         red.translatesAutoresizingMaskIntoConstraints = false
         red.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
         red.topAnchor.constraint(equalTo: colorDetails.topAnchor, constant: 10).isActive = true
         red.text = "Red \(Int(r*255))"
         red.textColor = .black
-        
+
         colorDetails.addSubview(green)
         green.translatesAutoresizingMaskIntoConstraints = false
         green.topAnchor.constraint(equalTo: red.bottomAnchor, constant: 10).isActive = true
         green.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
         green.text = "Green \(Int(g*255))"
         green.textColor = .black
-        
+
         colorDetails.addSubview(blue)
         blue.translatesAutoresizingMaskIntoConstraints = false
         blue.topAnchor.constraint(equalTo: green.bottomAnchor, constant: 10).isActive = true
         blue.centerXAnchor.constraint(equalTo: colorDetails.centerXAnchor).isActive = true
         blue.text = "Blue \(Int(b*255))"
         blue.textColor = .black
-        
+
     }
-    
-    
+
+
     func colorNameLabelSetup(){
         cardView.addSubview(colorNameLabel)
         colorNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -143,7 +143,7 @@ class OutputVC: UIViewController {
         colorNameLabel.font = UIFont.systemFont(ofSize: 20)
         colorNameLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
     }
-    
+
     func colorViewSetup() {
         cardView.addSubview(colorView)
         colorView.translatesAutoresizingMaskIntoConstraints = false
@@ -157,11 +157,11 @@ class OutputVC: UIViewController {
         let centY = (outputImage.size.height/2) - 15
         let centerColor = outputImage.averageColor(xCoord: Int(centX), yCoord: Int(centY))
         //let solidColor = UIColor(hex: cent)
-        
+
 
         colorView.backgroundColor = centerColor
     }
-    
+
     func copyButtonSetup() {
         cardView.addSubview(copyButton)
         copyButton.translatesAutoresizingMaskIntoConstraints = false
@@ -174,7 +174,7 @@ class OutputVC: UIViewController {
         copyButton.setTitle("Copy", for: .normal)
         copyButton.addTarget(self, action: #selector(copyButtonClicked), for: .touchUpInside)
     }
-    
+
     @objc func copyButtonClicked(){
         copyButton.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
         copyButton.setTitle("Copied", for: .normal)
@@ -182,7 +182,7 @@ class OutputVC: UIViewController {
         pasteBoard.string = "\(colorLabel.text!)"
     }
 
-    
+
     func colorLabelSetup() {
         cardView.addSubview(colorLabel)
         colorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -193,7 +193,7 @@ class OutputVC: UIViewController {
         colorLabel.textColor = #colorLiteral(red: 0.2470588235, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
         colorLabel.font = UIFont.boldSystemFont(ofSize: 25)
     }
-    
+
     func colorWheelEnvelopSetup() {
         cardView.addSubview(colorWheelEnvelop)
         colorWheelEnvelop.translatesAutoresizingMaskIntoConstraints = false
@@ -203,7 +203,7 @@ class OutputVC: UIViewController {
         colorWheelEnvelop.widthAnchor.constraint(equalToConstant: 250).isActive = true
         wheel.backgroundColor = .clear
     }
-    
+
     func setupColorWheel(HTML:String) {
         colorWheelEnvelop.addSubview(wheel)
         wheel.translatesAutoresizingMaskIntoConstraints = false
@@ -221,7 +221,7 @@ class OutputVC: UIViewController {
         wheel.backgroundColor = .clear
         wheel.isOpaque = true
     }
-    
+
     func captureImageViewSetup() {
         view.addSubview(captureImageView)
         captureImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -231,7 +231,7 @@ class OutputVC: UIViewController {
         captureImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         captureImageView.image = outputImage
     }
-    
+
     func cardViewSetup() {
         view.addSubview(cardView)
         cardView.translatesAutoresizingMaskIntoConstraints = false
@@ -242,7 +242,7 @@ class OutputVC: UIViewController {
         cardView.backgroundColor = .white
         cardView.layer.cornerRadius = 20
     }
-    
+
     func dismissButtonSetup() {
         view.addSubview(dismissButton)
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
@@ -252,12 +252,12 @@ class OutputVC: UIViewController {
         dismissButton.bottomAnchor.constraint(equalTo: cardView.topAnchor).isActive = true
         dismissButton.addTarget(self, action: #selector(dismissButtonClicked), for: .touchUpInside)
     }
-    
+
     @objc func dismissButtonClicked() {
         dismiss(animated: true, completion: nil)
     }
 
-    
+
     fileprivate func colorWheel(_ image: UIImage) {
         let centX = image.size.width/2 - 10
         let centY = image.size.height/2 - 10
@@ -271,13 +271,11 @@ class OutputVC: UIViewController {
             self.setupColorWheel(HTML: self.wheelSetValue(r: r, g: g, b: b))//color wheel added to screen
             self.colorLabel.text = centerColor!.hexString
             let solidImage = UIImage(color: centerColor!)
-            
-            guard let colorOutput = try? model.prediction(image: self.buffer(from: solidImage!)!) else {return}
-            print("color output \(colorOutput.classLabel)")
-            self.colorNameLabel.text = colorOutput.classLabel
+
+          
         }
     }
-    
+
     func wheelSetValue(r:CGFloat,g:CGFloat,b:CGFloat) -> String {
         let HTML = """
         <div class="outer"><div class="overlay"></div><div class="color-space"></div></div><style>.overlay { height: 100%; width: 100%; position: absolute;}</style>
@@ -419,5 +417,5 @@ class OutputVC: UIViewController {
         """
         return HTML
     }
-    
+
 }

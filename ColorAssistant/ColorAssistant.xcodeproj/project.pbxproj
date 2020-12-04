@@ -12,6 +12,8 @@
 		67589BB8237EAA420087318A /* ColorAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BB7237EAA420087318A /* ColorAssistantUITests.swift */; };
 		67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67589BD3237EAA7B0087318A /* ColorAssistantTests.swift */; };
 		67589BDB237EAA9F0087318A /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
+		6770913F257AF03100667AFE /* ColorDetector 3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAC27523BBD2690076FAAC /* ColorDetector 3.mlmodel */; };
+		67709143257AF03200667AFE /* ColorDetector 3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAC27523BBD2690076FAAC /* ColorDetector 3.mlmodel */; };
 		67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67786D4D238DAB4C009EA7B0 /* CompatabilityCheck.swift */; };
 		678AE1C1237E08B100F9151C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678AE1C0237E08B100F9151C /* Example.swift */; };
 		6E01124A2388677F00DF210B /* OutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0112492388677F00DF210B /* OutputVC.swift */; };
@@ -22,6 +24,7 @@
 		6ED015E92379FAB4004B9DD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ED015E72379FAB4004B9DD7 /* LaunchScreen.storyboard */; };
 		6ED0160F2379FCE6004B9DD7 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0160E2379FCE6004B9DD7 /* FirstView.swift */; };
 		6ED01616237F7BEE004B9DD7 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED01615237F7BEE004B9DD7 /* CameraVC.swift */; };
+		6EFAC27623BBD2690076FAAC /* ColorDetector 3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAC27523BBD2690076FAAC /* ColorDetector 3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,7 @@
 		6ED015EA2379FAB4004B9DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6ED0160E2379FCE6004B9DD7 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		6ED01615237F7BEE004B9DD7 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		6EFAC27523BBD2690076FAAC /* ColorDetector 3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ColorDetector 3.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 		6ED015DB2379FAB2004B9DD7 /* ColorAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				6EFAC27523BBD2690076FAAC /* ColorDetector 3.mlmodel */,
 				6ED015DC2379FAB2004B9DD7 /* AppDelegate.swift */,
 				678AE1C0237E08B100F9151C /* Example.swift */,
 				6ED0160E2379FCE6004B9DD7 /* FirstView.swift */,
@@ -287,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67589BB8237EAA420087318A /* ColorAssistantUITests.swift in Sources */,
+				6770913F257AF03100667AFE /* ColorDetector 3.mlmodel in Sources */,
 				671E2F19239471A200449401 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +304,7 @@
 				671E2F18239471A200449401 /* Extension.swift in Sources */,
 				67589BD4237EAA7B0087318A /* ColorAssistantTests.swift in Sources */,
 				67589BDB237EAA9F0087318A /* FirstView.swift in Sources */,
+				67709143257AF03200667AFE /* ColorDetector 3.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +315,7 @@
 				678AE1C1237E08B100F9151C /* Example.swift in Sources */,
 				67786D4E238DAB4C009EA7B0 /* CompatabilityCheck.swift in Sources */,
 				6E820346238F73DD00B1FED7 /* Extension.swift in Sources */,
+				6EFAC27623BBD2690076FAAC /* ColorDetector 3.mlmodel in Sources */,
 				6E01124A2388677F00DF210B /* OutputVC.swift in Sources */,
 				6ED01616237F7BEE004B9DD7 /* CameraVC.swift in Sources */,
 				6ED015DD2379FAB2004B9DD7 /* AppDelegate.swift in Sources */,
@@ -547,6 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorAssistant/Preview Content\"";
 				DEVELOPMENT_TEAM = N6ESLEE34B;
 				ENABLE_PREVIEWS = YES;
@@ -567,6 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorAssistant/Preview Content\"";
 				DEVELOPMENT_TEAM = N6ESLEE34B;
 				ENABLE_PREVIEWS = YES;

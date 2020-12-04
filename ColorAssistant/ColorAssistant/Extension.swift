@@ -88,7 +88,7 @@ extension UIColor {
 		return color
 	}
 	func name() -> String {
-		let model = ColorDetector_3()
+		
 		let solidImage = UIImage(color: self)
 		guard let colorOutput = try? model.prediction(image: self.buffer(from: solidImage!)!)
 		else {return ""}

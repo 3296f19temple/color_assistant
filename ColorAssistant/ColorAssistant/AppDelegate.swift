@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+let model = ColorDetector_3()
 
 
 @UIApplicationMain

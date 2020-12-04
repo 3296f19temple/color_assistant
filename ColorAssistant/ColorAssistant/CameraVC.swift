@@ -151,7 +151,8 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         captureImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         captureImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
-    
+	
+	
 
 }
 
